@@ -1,0 +1,955 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CarMatch - Ultimate Automotive Personality & Spec Quiz</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Inter:wght@300;400;500;600;700&family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        orbitron: ['Orbitron', 'sans-serif'],
+                        inter: ['Inter', 'sans-serif'],
+                        cairo: ['Cairo', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0b0f19;
+            color: #f3f4f6;
+            overflow-x: hidden;
+        }
+        body[dir="rtl"] {
+            font-family: 'Cairo', sans-serif;
+        }
+        .heading-font {
+            font-family: 'Orbitron', 'Cairo', sans-serif;
+        }
+        /* Animated Engine Pistons Background */
+        .pistons-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            display: flex;
+            justify-content: space-around;
+            opacity: 0.12;
+        }
+        .piston-column {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 60px;
+            height: 120%;
+            position: relative;
+        }
+        .cylinder {
+            width: 50px;
+            height: 100%;
+            border-left: 2px dashed rgba(239, 68, 68, 0.5);
+            border-right: 2px dashed rgba(239, 68, 68, 0.5);
+            position: relative;
+        }
+        .piston-head {
+            width: 44px;
+            height: 30px;
+            background: linear-gradient(135deg, #ef4444, #991b1b);
+            border-radius: 6px;
+            position: absolute;
+            top: 10%;
+            left: 3px;
+            box-shadow: 0 0 15px rgba(239, 68, 68, 0.6);
+            animation: movePiston 2.5s infinite ease-in-out;
+        }
+        .piston-column:nth-child(2) .piston-head { animation-delay: 0.3s; background: linear-gradient(135deg, #3b82f6, #1d4ed8); box-shadow: 0 0 15px rgba(59, 130, 246, 0.6); }
+        .piston-column:nth-child(3) .piston-head { animation-delay: 0.7s; background: linear-gradient(135deg, #10b981, #047857); box-shadow: 0 0 15px rgba(16, 185, 129, 0.6); }
+        .piston-column:nth-child(4) .piston-head { animation-delay: 1.1s; background: linear-gradient(135deg, #f59e0b, #b45309); box-shadow: 0 0 15px rgba(245, 158, 11, 0.6); }
+        .piston-column:nth-child(5) .piston-head { animation-delay: 0.5s; background: linear-gradient(135deg, #8b5cf6, #6d28d9); box-shadow: 0 0 15px rgba(139, 92, 246, 0.6); }
+
+        @keyframes movePiston {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(180px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .glass-card {
+            background: rgba(17, 24, 39, 0.85);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+        }
+        .option-card {
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .option-card:hover {
+            transform: translateY(-2px);
+            border-color: rgba(239, 68, 68, 0.6);
+            box-shadow: 0 0 20px rgba(239, 68, 68, 0.2);
+        }
+        .option-card.selected {
+            background: rgba(239, 68, 68, 0.15);
+            border-color: #ef4444;
+            box-shadow: 0 0 25px rgba(239, 68, 68, 0.35);
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between relative">
+
+    <!-- Background Engine Pistons -->
+    <div class="pistons-container">
+        <div class="piston-column"><div class="cylinder"><div class="piston-head"></div></div></div>
+        <div class="piston-column"><div class="cylinder"><div class="piston-head"></div></div></div>
+        <div class="piston-column"><div class="cylinder"><div class="piston-head"></div></div></div>
+        <div class="piston-column"><div class="cylinder"><div class="piston-head"></div></div></div>
+        <div class="piston-column"><div class="cylinder"><div class="piston-head"></div></div></div>
+    </div>
+
+    <!-- Header -->
+    <header class="relative z-10 w-full border-b border-gray-800/80 bg-gray-950/70 backdrop-blur-md py-4 px-6 flex justify-between items-center">
+        <div class="flex items-center space-x-3 rtl:space-x-reverse cursor-pointer" onclick="goHome()">
+            <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-red-600 to-orange-500 flex items-center justify-center shadow-lg shadow-red-600/30">
+                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+            </div>
+            <span class="heading-font text-2xl font-black tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-white via-gray-200 to-red-500">CarMatch</span>
+        </div>
+        <div class="flex items-center space-x-3 rtl:space-x-reverse">
+            <div id="progress-indicator" class="hidden text-sm heading-font text-gray-400">
+                <span id="q-label">Question</span> <span id="current-q-num" class="text-red-500 font-bold">1</span> / 15
+            </div>
+            <button onclick="showThanksPage()" id="thanks-nav-btn" class="px-3 py-1.5 rounded-lg border border-gray-700 hover:border-gray-500 bg-gray-900 text-xs font-bold text-gray-300 transition">
+                Thanks to
+            </button>
+            <button onclick="toggleLanguage()" class="px-3 py-1.5 rounded-lg border border-gray-700 hover:border-gray-500 bg-gray-900 text-xs font-bold text-gray-300 transition flex items-center space-x-1.5 rtl:space-x-reverse">
+                <svg class="w-4 h-4 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129"/></svg>
+                <span id="lang-btn-text">العربية</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="relative z-10 flex-grow flex items-center justify-center p-4 sm:p-6 max-w-4xl mx-auto w-full">
+        
+        <!-- Welcome Screen -->
+        <div id="welcome-screen" class="glass-card rounded-2xl p-8 sm:p-12 text-center w-full max-w-2xl">
+            <div class="inline-block p-4 bg-red-500/10 rounded-2xl border border-red-500/20 mb-6 text-red-500">
+                <svg class="w-12 h-12 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 100-6 3 3 0 000 6z"/></svg>
+            </div>
+            <h1 id="welcome-title" class="heading-font text-3xl sm:text-4xl font-black mb-4 tracking-wide text-white">Find Your Ultimate Car Match</h1>
+            <p id="welcome-desc" class="text-gray-400 mb-8 leading-relaxed">
+                Take our super casual 15-question car quiz! Let's figure out your vibe and match you with your real-world dream ride—whether it's an old-school legend, a daily commuter, or a pure beast.
+            </p>
+            <button id="start-btn" onclick="startQuiz()" class="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-red-600 to-red-700 hover:from-red-500 hover:to-red-600 text-white font-bold heading-font tracking-wider rounded-xl shadow-lg shadow-red-600/40 transition-all transform hover:-translate-y-0.5">
+                START THE VIBE CHECK
+            </button>
+        </div>
+
+        <!-- Quiz Screen -->
+        <div id="quiz-screen" class="hidden glass-card rounded-2xl p-6 sm:p-10 w-full max-w-3xl">
+            <!-- Progress Bar -->
+            <div class="w-full bg-gray-800 h-2 rounded-full mb-8 overflow-hidden">
+                <div id="progress-bar" class="bg-gradient-to-r from-red-600 to-orange-500 h-full w-0 transition-all duration-300"></div>
+            </div>
+
+            <h2 id="question-title" class="heading-font text-xl sm:text-2xl font-bold mb-6 text-white"></h2>
+            
+            <div id="options-container" class="space-y-3 mb-8">
+                <!-- Dynamic options injected here -->
+            </div>
+
+            <div class="flex justify-between items-center pt-4 border-t border-gray-800">
+                <button id="prev-btn" onclick="prevQuestion()" class="hidden px-5 py-2.5 rounded-lg border border-gray-700 hover:border-gray-500 text-gray-300 text-sm font-semibold transition">
+                    Back
+                </button>
+                <div class="ml-auto rtl:ml-0 rtl:mr-auto">
+                    <button id="next-btn" onclick="nextQuestion()" disabled class="px-6 py-3 bg-red-600 hover:bg-red-500 disabled:opacity-40 disabled:hover:bg-red-600 text-white font-bold rounded-xl heading-font text-sm tracking-wider transition shadow-lg shadow-red-600/20">
+                        Next Question
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Result Screen -->
+        <div id="result-screen" class="hidden glass-card rounded-2xl p-6 sm:p-10 w-full max-w-3xl">
+            <div class="text-center mb-8">
+                <span id="result-badge" class="px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest bg-red-500/20 text-red-400 border border-red-500/30 heading-font">Optimal Match Identified</span>
+                <h1 id="result-car-name" class="heading-font text-3xl sm:text-4xl font-black mt-3 text-white"></h1>
+                <p id="result-tagline" class="text-gray-400 mt-2 italic"></p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+                <div class="bg-gray-900/80 p-4 rounded-xl border border-gray-800 text-center">
+                    <span id="spec-hp-label" class="block text-xs uppercase tracking-wider text-gray-500 heading-font">Power Output</span>
+                    <span id="spec-hp" class="text-xl font-bold text-red-500 heading-font mt-1 block"></span>
+                </div>
+                <div class="bg-gray-900/80 p-4 rounded-xl border border-gray-800 text-center">
+                    <span id="spec-060-label" class="block text-xs uppercase tracking-wider text-gray-500 heading-font">0-60 Time</span>
+                    <span id="spec-060" class="text-xl font-bold text-orange-400 heading-font mt-1 block"></span>
+                </div>
+                <div class="bg-gray-900/80 p-4 rounded-xl border border-gray-800 text-center">
+                    <span id="spec-layout-label" class="block text-xs uppercase tracking-wider text-gray-500 heading-font">Layout / Drivetrain</span>
+                    <span id="spec-layout" class="text-xl font-bold text-blue-400 heading-font mt-1 block"></span>
+                </div>
+            </div>
+
+            <div class="bg-gray-900/60 p-6 rounded-xl border border-gray-800 mb-8">
+                <h3 id="why-title" class="heading-font font-bold text-white mb-2 flex items-center">
+                    <svg class="w-5 h-5 text-red-500 mr-2 rtl:mr-0 rtl:ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                    Why This Car Fits Your DNA
+                </h3>
+                <p id="result-reasoning" class="text-gray-300 text-sm leading-relaxed"></p>
+            </div>
+
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <button id="retake-btn" onclick="restartQuiz()" class="px-6 py-3 bg-gray-800 hover:bg-gray-700 text-white font-bold rounded-xl heading-font text-sm tracking-wider transition border border-gray-700">
+                    Retake Consultation
+                </button>
+                <button id="share-btn" onclick="shareResult()" class="px-6 py-3 bg-red-600 hover:bg-red-500 text-white font-bold rounded-xl heading-font text-sm tracking-wider transition shadow-lg shadow-red-600/30">
+                    Copy Result Summary
+                </button>
+            </div>
+        </div>
+
+        <!-- Thanks To Screen -->
+        <div id="thanks-screen" class="hidden glass-card rounded-2xl p-8 sm:p-12 text-center w-full max-w-2xl">
+            <div class="inline-block p-4 bg-orange-500/10 rounded-2xl border border-orange-500/20 mb-6 text-orange-500">
+                <svg class="w-12 h-12 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+            </div>
+            <h1 id="thanks-heading" class="heading-font text-3xl font-black mb-4 text-white">Special Thanks & Shoutouts</h1>
+            <p id="thanks-sub" class="text-gray-400 mb-8">This awesome project wouldn't be rolling without these legends:</p>
+            
+            <div class="space-y-4 mb-8">
+                <div class="bg-gray-900/80 p-4 rounded-xl border border-gray-800 flex items-center justify-between">
+                    <span class="font-bold text-white heading-font">Susu</span>
+                    <span class="px-3 py-1 rounded-full text-xs font-bold bg-red-500/20 text-red-400 border border-red-500/30" id="role-susu">Founder</span>
+                </div>
+                <div class="bg-gray-900/80 p-4 rounded-xl border border-gray-800 flex items-center justify-between">
+                    <span class="font-bold text-white heading-font">Abu Muteb</span>
+                    <span class="px-3 py-1 rounded-full text-xs font-bold bg-blue-500/20 text-blue-400 border border-blue-500/30" id="role-abumuteb">Car Lover</span>
+                </div>
+                <div class="bg-gray-900/80 p-4 rounded-xl border border-gray-800 flex items-center justify-between">
+                    <span class="font-bold text-white heading-font">Hso</span>
+                    <span class="px-3 py-1 rounded-full text-xs font-bold bg-emerald-500/20 text-emerald-400 border border-emerald-500/30" id="role-hso">Wannabe Partner</span>
+                </div>
+            </div>
+
+            <button onclick="goHome()" class="px-6 py-3 bg-red-600 hover:bg-red-500 text-white font-bold rounded-xl heading-font text-sm tracking-wider transition shadow-lg shadow-red-600/30" id="back-home-btn">
+                Back to Home
+            </button>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="relative z-10 w-full py-4 text-center text-xs text-gray-500 border-t border-gray-900">
+        CarMatch &copy; 2026 &bull; Made with passion by Susu, Abu Muteb & Hso
+    </footer>
+
+    <script>
+        let currentLang = 'en';
+
+        const translations = {
+            en: {
+                appName: "CarMatch",
+                qLabel: "Question",
+                langBtn: "العربية",
+                thanksNav: "Thanks to",
+                welcomeTitle: "Find Your Ultimate Car Match",
+                welcomeDesc: "Take our super casual 15-question car quiz! Let's figure out your vibe and match you with your real-world dream ride—whether it's an old-school legend, a daily commuter, or a pure beast.",
+                startBtn: "START THE VIBE CHECK",
+                nextBtn: "Next Question",
+                calcBtn: "Show My Ride!",
+                backBtn: "Back",
+                resultBadge: "Optimal Match Identified",
+                hpLabel: "Power Output",
+                timeLabel: "0-60 Time",
+                layoutLabel: "Layout / Drivetrain",
+                whyTitle: "Why This Car Fits Your Vibe",
+                retakeBtn: "Retake Quiz",
+                shareBtn: "Copy Result Summary",
+                copiedAlert: "Result summary copied to clipboard!",
+                thanksHeading: "Special Thanks & Shoutouts",
+                thanksSub: "This awesome project wouldn't be rolling without these legends:",
+                roleSusu: "Founder",
+                roleAbu: "Car Lover",
+                roleHso: "Wannabe Partner",
+                backHomeBtn: "Back to Home"
+            },
+            ar: {
+                appName: "CarMatch",
+                qLabel: "السؤال",
+                langBtn: "English",
+                thanksNav: "شكراً لـ",
+                welcomeTitle: "اعثر على سيارتك المناسبة",
+                welcomeDesc: "خذ اختبار السيارات الخفيف المكون من 15 سؤالاً! دعنا نكتشف ذوقك ونطابقك مع سيارة أحلامك الحقيقية—سواء كانت أسطورة قديمة، سيارة دوام، أو وحش سرعة.",
+                startBtn: "ابدأ اختبار المزاج",
+                nextBtn: "السؤال التالي",
+                calcBtn: "اعرض سيارتي!",
+                backBtn: "السابق",
+                resultBadge: "تم تحديد سيارتك بنجاح",
+                hpLabel: "قوة المحرك",
+                timeLabel: "التسارع (0-60)",
+                layoutLabel: "التصميم / نظام الدفع",
+                whyTitle: "ليش هذي السيارة تناسب جوك؟",
+                retakeBtn: "إعادة الاختبار",
+                shareBtn: "نسخ ملخص النتيجة",
+                copiedAlert: "تم نسخ ملخص النتيجة إلى الحافظة!",
+                thanksHeading: "شكر خاص وتحية",
+                thanksSub: "هالمشروع ما كان بيتحرك لولا هالأسامين الرهيبة:",
+                roleSusu: "المؤسسة",
+                roleAbu: "عاشق السيارات",
+                roleHso: "الشريك المستقبلي",
+                backHomeBtn: "الرجوع للرئيسية"
+            }
+        };
+
+        const questionsData = {
+            en: [
+                {
+                    title: "1. What is your engine philosophy when you step on the gas?",
+                    options: [
+                        { text: "Give me high-revs, screaming naturally aspirated soul!", type: "track" },
+                        { text: "Twin-turbo punch pushing me back into the seat.", type: "muscle" },
+                        { text: "Silent electric rocket thrust, zero lag whatsoever.", type: "ev" },
+                        { text: "Just get me to work reliably without draining my wallet.", type: "corolla" }
+                    ]
+                },
+                {
+                    title: "2. What body style actually matches your lifestyle?",
+                    options: [
+                        { text: "Low-slung 2-door coupe or weekend track toy.", type: "track" },
+                        { text: "A massive, intimidating American muscle sedan or cruiser.", type: "charger" },
+                        { text: "A solid daily commuter sedan to beat city traffic.", type: "elantra" },
+                        { text: "A roomy SUV for family road trips and grocery runs.", type: "rx8" }
+                    ]
+                },
+                {
+                    title: "3. How do you feel about old-school cruisers?",
+                    options: [
+                        { text: "Love them! Give me a classic heavy cruiser with massive road presence.", type: "caprice" },
+                        { text: "Too heavy, I prefer sharp modern corner carvers.", type: "track" },
+                        { text: "They're cool for car meets, but give me modern fuel economy.", type: "altima" },
+                        { text: "Not my style, I want something compact and zippy.", type: "cerato" }
+                    ]
+                },
+                {
+                    title: "4. What transmission setup are you rocking with?",
+                    options: [
+                        { text: "Strictly 6-speed manual, heel-toe shifting baby!", type: "track" },
+                        { text: "Smooth automatic that handles highway cruising effortlessly.", type: "altima" },
+                        { text: "Reliable CVT or standard automatic for stress-free traffic jams.", type: "corolla" },
+                        { text: "Heavy-duty automatic built for brutal acceleration.", type: "charger" }
+                    ]
+                },
+                {
+                    title: "5. Where do you spend most of your driving time?",
+                    options: [
+                        { text: "Empty winding backroads and canyon runs on weekends.", type: "track" },
+                        { text: "Cruising down the main highway blaring music.", type: "charger" },
+                        { text: "Stuck in daily rush-hour traffic commuting to work/uni.", type: "corolla" },
+                        { text: "Weekend family getaways and parking lots.", type: "captiva" }
+                    ]
+                },
+                {
+                    title: "6. What kind of exhaust note makes you smile?",
+                    options: [
+                        { text: "A thunderous American V8 roar that scares pedestrians.", type: "charger" },
+                        { text: "A deep, nostalgic V8 burble from a classic land yacht.", type: "caprice" },
+                        { text: "A quiet, peaceful hum so my neighbors don't hate me.", type: "corolla" },
+                        { text: "Pure futuristic electric whine or subtle turbo spool.", type: "ev" }
+                    ]
+                },
+                {
+                    title: "7. How do you like your interior setup?",
+                    options: [
+                        { text: "Minimalist racing bucket seats and digital telemetry gauges.", type: "track" },
+                        { text: "Comfy leather couch-like seats built for cross-country comfort.", type: "caprice" },
+                        { text: "Practical cupholders, good AC, and simple Bluetooth connection.", type: "elantra" },
+                        { text: "Spacious multi-row seating with tons of cargo room.", type: "rx8" }
+                    ]
+                },
+                {
+                    title: "8. What's your driving style personality?",
+                    options: [
+                        { text: "Aggressive street racer looking for the next green light.", type: "charger" },
+                        { text: "Chill cruiser relaxing with one hand on the steering wheel.", type: "caprice" },
+                        { text: "Smart budget planner saving every drop of fuel.", type: "corolla" },
+                        { text: "Busy bee running errands and juggling life.", type: "captiva" }
+                    ]
+                },
+                {
+                    title: "9. Which car brand vibe speaks to your soul?",
+                    options: [
+                        { text: "Classic Chevrolet V8 heritage (pure Americana).", type: "caprice" },
+                        { text: "Dodge attitude: bold, loud, and unapologetic.", type: "charger" },
+                        { text: "Toyota/Nissan reliability: bulletproof and practical.", type: "corolla" },
+                        { text: "Korean/Chinese modern tech style (Kia, Hyundai, MG).", type: "cerato" }
+                    ]
+                },
+                {
+                    title: "10. What's your approach to car maintenance?",
+                    options: [
+                        { text: "I change my oil once every five years and hope for the best.", type: "altima" },
+                        { text: "It just runs forever with zero complaints, absolute tank.", type: "corolla" },
+                        { text: "I spend every weekend modding and tuning it.", type: "track" },
+                        { text: "Keep it clean, serviced, and ready for family duty.", type: "captiva" }
+                    ]
+                },
+                {
+                    title: "11. How do you feel about modern road cameras and speed limits?",
+                    options: [
+                        { text: "My worst enemy—I live life a quarter-mile at a time.", type: "charger" },
+                        { text: "Cruise control set strictly to the speed limit, thank you.", type: "corolla" },
+                        { text: "I know where every camera is hidden on my daily route.", type: "altima" },
+                        { text: "Chill and steady pace, no rush.", type: "elantra" }
+                    ]
+                },
+                {
+                    title: "12. What's your go-to weekend parking spot?",
+                    options: [
+                        { text: "Front row at Cars & Coffee next to other modded whips.", type: "charger" },
+                        { text: "Any tight parallel parking spot because my car is compact and easy.", type: "cerato" },
+                        { text: "The shaded spot under the building to keep the paint safe.", type: "elantra" },
+                        { text: "Right by the mega-mall entrance for easy grocery loading.", type: "captiva" }
+                    ]
+                },
+                {
+                    title: "13. What color paint job matches your personality?",
+                    options: [
+                        { text: "In-your-face Hellcat green, bright red, or matte black.", type: "charger" },
+                        { text: "Clean pearl white or silver that never looks dirty.", type: "corolla" },
+                        { text: "Deep midnight blue or executive dark gray.", type: "altima" },
+                        { text: "Stylish metallic gray or trendy urban tone.", type: "rx8" }
+                    ]
+                },
+                {
+                    title: "14. How do your friends describe your driving?",
+                    options: [
+                        { text: "'Bro, slow down, you're gonna get us pulled over!'", type: "charger" },
+                        { text: "'So smooth I could take a nap in the passenger seat.'", type: "caprice" },
+                        { text: "'Reliable Uber driver energy.'", type: "elantra" },
+                        { text: "'Always on time, always practical.'", type: "corolla" }
+                    ]
+                },
+                {
+                    title: "15. What is your ultimate goal when buying a car?",
+                    options: [
+                        { text: "Turn heads, make noise, and burn rubber.", type: "charger" },
+                        { text: "Pure timeless comfort and cruising vibes.", type: "caprice" },
+                        { text: "Zero stress, great gas mileage, bulletproof reliability.", type: "corolla" },
+                        { text: "Utility, style, and room for everyone.", type: "captiva" }
+                    ]
+                }
+            ],
+            ar: [
+                {
+                    title: "1. وش فلسفة محركك لما تدعس بنزين؟",
+                    options: [
+                        { text: "عطني دورات عالية وصوت تنفس طبيعي طربي!", type: "track" },
+                        { text: "تيربو مزدوج يلصقني بالمرتبة من القوة.", type: "muscle" },
+                        { text: "دفع صاروخي كهربائي صامت بدون أي تأخير.", type: "ev" },
+                        { text: "أهم شي يوصلني للدوام بدون ما يصرف بانزين واجد.", type: "corolla" }
+                    ]
+                },
+                {
+                    title: "2. وش شكل الهيكل اللي يناسب حياتك اليومية؟",
+                    options: [
+                        { text: "كوبيه نازلة بابين حق تفحيط ونهاية أسبوع.", type: "track" },
+                        { text: "سيدان أمريكية عضلية هجومية ومرعبة.", type: "charger" },
+                        { text: "سيارة سيدان عملية للزحمة وخطوط المدينة.", type: "elantra" },
+                        { text: "إس يو في عائلية واسعة للطلعات والأغراض.", type: "rx8" }
+                    ]
+                },
+                {
+                    title: "3. وش رايك بالسيارات الكلاسيكية القديمة (مثل لاند يات)؟",
+                    options: [
+                        { text: "أعشقها! عطني كابريس قديم بهيبة وراحة ريزدنس.", type: "caprice" },
+                        { text: "ثقيلة مرة، أفضل السيارات الرياضية الخفيفة.", type: "track" },
+                        { text: "حلوة للتجمعات بس أبي اقتصاد فودر حديث.", type: "altima" },
+                        { text: "مو جوي، أبي شي صغير وصغير وخفيف.", type: "cerato" }
+                    ]
+                },
+                {
+                    title: "4. وش نظام القير اللي تفضله؟",
+                    options: [
+                        { text: "عادي 6 نمر، تعشيق يدوي ومتعة حقيقية!", type: "track" },
+                        { text: "أوتوماتيك ناعم يريحني بالخطوط السريعة.", type: "altima" },
+                        { text: "قير CVT عملي ومريح للزحمة وما يطلب شي.", type: "corolla" },
+                        { text: "قير ثقيل مخصص للسرعة والقوة.", type: "charger" }
+                    ]
+                },
+                {
+                    title: "5. وين تقضي أكثر وقت قيادة لك؟",
+                    options: [
+                        { text: "الطرق الجبلية والخطوط الفاضية يوم الخميس.", type: "track" },
+                        { text: "أفحط على الخط السريع وأسمع أغاني بصوت عالي.", type: "charger" },
+                        { text: "متعلق بزحمة الدوام والشارع التجاري كل صباح.", type: "corolla" },
+                        { text: "طلعات عائلية ومواقف البقالات والجمعيات.", type: "captiva" }
+                    ]
+                },
+                {
+                    title: "6. أي صوت عادم يخليك تبتسم؟",
+                    options: [
+                        { text: "هدير V8 أمريكي مزلزل يخوف اللي ماشين بالشارع.", type: "charger" },
+                        { text: "صوت V8 هادئ ورايق حق سيارات الفخامة القديمة.", type: "caprice" },
+                        { text: "صوت هادئ كأنها مطفية عشان جيراني ما يزعجهم.", type: "corolla" },
+                        { text: "صفير كهربائي مستقبلي أو تيربو خفيف.", type: "ev" }
+                    ]
+                },
+                {
+                    title: "7. كيف تحب تكون ديكورات الداخلية؟",
+                    options: [
+                        { text: "مقاعد سباق كربون فايبر وعدادات أداء رقمية.", type: "track" },
+                        { text: "مراتب كنب أمريكية واسعة ومريحة كأنك ببيتك.", type: "caprice" },
+                        { text: "أكواب قهوة، مكيف بارد، وبلوتوث سريع وواضح.", type: "elantra" },
+                        { text: "مقاعد كثيرة ومساحة تخزين تشيل كل أغراض البيت.", type: "rx8" }
+                    ]
+                },
+                {
+                    title: "8. وش شخصيتك وأنت تسوق؟",
+                    options: [
+                        { text: "متهور بالشارع وأول واحد ينطلق عند الإشارة.", type: "charger" },
+                        { text: "رايق وساحب على العالم ويد وحدة على الطارة.", type: "caprice" },
+                        { text: "موفر اقتصادي يحسب حساب كل هللة بانزين.", type: "corolla" },
+                        { text: "مشغول ومشاويري ماتخلص يمين ويسار.", type: "captiva" }
+                    ]
+                },
+                {
+                    title: "9. أي وكالة أو هوية سيارات تقرب لقلبك؟",
+                    options: [
+                        { text: "تراث شفروليه العريق والV8 الأصلي.", type: "caprice" },
+                        { text: "هيبة دودج: جريئة، صوتها عالي وماتعتذر لأحد.", type: "charger" },
+                        { text: "اعتمادية تويوتا ونيسان: حديد لا ينكسر وعملي.", type: "corolla" },
+                        { text: "ستايل السيارات الكورية والصينية الحديثة والتقنية.", type: "cerato" }
+                    ]
+                },
+                {
+                    title: "10. كيف تتعامل مع صيانة السيارة؟",
+                    options: [
+                        { text: "أغير الزيت كل 5 سنين وأتوكل على الله.", type: "altima" },
+                        { text: "تشتغل كدادة أبدية بدون أي مشاكل أو أعطال.", type: "corolla" },
+                        { text: "أقضي كل ويكند ألعب بالتعديل والترهيم.", type: "track" },
+                        { text: "أهتم بنظافتها وصيانتها الدورية أول بأول عشان العائلة.", type: "captiva" }
+                    ]
+                },
+                {
+                    title: "11. وش موقفك من ساهر والسرعة بالشارع؟",
+                    options: [
+                        { text: "عدوي اللدود—أعيش حياتي ربع ميل بربع ميل.", type: "charger" },
+                        { text: "مثبت السرعة على النظام بالضبط، شكراً ساهر.", type: "corolla" },
+                        { text: "حافظ مكان كل كاميرا ساهر بطريقي للدوام حفظ.", type: "altima" },
+                        { text: "ماشي على مهلي وبسلطنة تامة.", type: "elantra" }
+                    ]
+                },
+                {
+                    title: "12. وين تحب توقف سيارتك بالويكند؟",
+                    options: [
+                        { text: "أول صفة عند التجمع جنب الشباب والمواتر الملغمة.", type: "charger" },
+                        { text: "بأي موقف ضيق لأن سيارتي صغيرة وسهلة الاصطفاف.", type: "cerato" },
+                        { text: "بالمظلّة تحت العمارة عشان البوية ما تحترق من الشمس.", type: "elantra" },
+                        { text: "قدام باب السوبرماركت الكبير عشان نزول الأغراض.", type: "captiva" }
+                    ]
+                },
+                {
+                    title: "13. وش لون البوية اللي يعبر عن شخصيتك؟",
+                    options: [
+                        { text: "أخضر هيلكات صاخب، أحمر فاقع، أو أسود مطفي.", type: "charger" },
+                        { text: "أبيض لؤلؤي أو فضي ما يبان فيه الغبار أبداً.", type: "corolla" },
+                        { text: "أزرق ليلي غامق أو رمادي رسمي فخم.", type: "altima" },
+                        { text: "رمادي معدني أنيق أو لون شبابي مودرن.", type: "rx8" }
+                    ]
+                },
+                {
+                    title: "14. كيف أصحابك يوصفون سواقتك؟",
+                    options: [
+                        { text: "'ياخي خف علينا بتصيدنا ساهر وتحطنا بداهية!'", type: "charger" },
+                        { text: "'سواقتك ناعمة كأننا قاعدين بكنب بيت مو سيارة.'", type: "caprice" },
+                        { text: "'سواق تكاسي محترف وراكد.'", type: "elantra" },
+                        { text: "'مواظب وعملي وما عندك لفات واجد.'", type: "corolla" }
+                    ]
+                },
+                {
+                    title: "15. وش هدفك الأساسي لما تفكر تشري سيارة؟",
+                    options: [
+                        { text: "ألفت الأنظار، أسوي صوت، وأحرق تواير.", type: "charger" },
+                        { text: "راحة أبدية وراوقان وخطوط طويلة.", type: "caprice" },
+                        { text: "بدون وجع راس، صرفية بنزين صفر، واعتمادية تامة.", type: "corolla" },
+                        { text: "مساحة، كشخة، وتشيل العائلة والربع معك.", type: "captiva" }
+                    ]
+                }
+            ]
+        };
+
+        const carsDatabase = {
+            en: {
+                track: {
+                    name: "Porsche 911 GT3 (992)",
+                    tagline: "The Track Weapon for Pure Speed Freaks",
+                    hp: "502 HP",
+                    time060: "3.2 sec",
+                    layout: "Rear-Engine, RWD",
+                    reasoning: "You have zero patience for slow cars. Your answers scream track days, high revs, and absolute precision driving. You belong behind the wheel of a screaming German masterpiece."
+                },
+                muscle: {
+                    name: "Ford Mustang Dark Horse",
+                    tagline: "American V8 Muscle & Aggression",
+                    hp: "500 HP",
+                    time060: "3.6 sec",
+                    layout: "Front-Engine, RWD",
+                    reasoning: "You love raw power, tire smoke, and V8 rumble. The Dark Horse matches your bold energy and desire to dominate the asphalt."
+                },
+                charger: {
+                    name: "Dodge Charger Scat Pack / Hellcat",
+                    tagline: "The King of Straight-Line Street Presence",
+                    hp: "485 - 717 HP",
+                    time060: "3.6 - 4.3 sec",
+                    layout: "Front-Engine, RWD/AWD",
+                    reasoning: "You love making noise, turning heads at every red light, and dominating the highway. The Charger is loud, proud, and fits your bold personality perfectly!"
+                },
+                caprice: {
+                    name: "Chevrolet Caprice Classic (Vintage / SS)",
+                    tagline: "The Ultimate Legend of Road Comfort & V8 Torque",
+                    hp: "260 - 350 HP",
+                    time060: "6.5 sec",
+                    layout: "Front-Engine, RWD Land Yacht",
+                    reasoning: "You appreciate old-school comfort, massive road presence, and smooth cruising. A classic Caprice gives you couch-like seating with true cruiser vibes."
+                },
+                corolla: {
+                    name: "Toyota Corolla",
+                    tagline: "The Bulletproof King of Reliability",
+                    hp: "139 - 169 HP",
+                    time060: "8.5 sec",
+                    layout: "Front-Engine, FWD",
+                    reasoning: "You want zero stress, stellar fuel efficiency, and a car that will literally outlive the universe. The Corolla is your bulletproof companion for daily life!"
+                },
+                altima: {
+                    name: "Nissan Altima (2017)",
+                    tagline: "The Highway Cruiser & Daily Commuter",
+                    hp: "182 HP",
+                    time060: "7.7 sec",
+                    layout: "Front-Engine, FWD",
+                    reasoning: "You're practical, laid-back, and spend plenty of time cruising highways. The 2017 Altima gives you comfortable seating and easy commuting energy."
+                },
+                elantra: {
+                    name: "Hyundai Elantra",
+                    tagline: "The Modern Smart City Commuter",
+                    hp: "147 HP",
+                    time060: "8.1 sec",
+                    layout: "Front-Engine, FWD",
+                    reasoning: "You are smart with your money, love clean styling, and need a reliable tech-filled ride to zip through city streets without breaking a sweat."
+                },
+                cerato: {
+                    name: "Kia Cerato",
+                    tagline: "The Sharp & Nimble Urban Hatch/Sedan",
+                    hp: "147 HP",
+                    time060: "8.3 sec",
+                    layout: "Front-Engine, FWD",
+                    reasoning: "You want something agile, easy to park in tight spots, modern, and stylish. The Cerato matches your vibrant young-professional vibe."
+                },
+                rx8: {
+                    name: "MG RX8 SUV",
+                    tagline: "The Rugged Family & Road Trip Adventure SUV",
+                    hp: "221 HP",
+                    time060: "8.8 sec",
+                    layout: "Front-Engine, 4WD",
+                    reasoning: "You need space, utility, and road presence for family trips or group hangouts. The MG RX8 gives you multi-row seating and 4WD capability for any outing."
+                },
+                captiva: {
+                    name: "Chevrolet Captiva",
+                    tagline: "The Practical Family Space Carrier",
+                    hp: "148 HP",
+                    time060: "9.5 sec",
+                    layout: "Front-Engine, FWD",
+                    reasoning: "You're all about family duty, grocery runs, and practical space. The Captiva keeps everyone comfortable with zero hassle."
+                },
+                ev: {
+                    name: "Lucid Air Sapphire",
+                    tagline: "The Electric Hyper-Cruiser",
+                    hp: "1,234 HP",
+                    time060: "1.89 sec",
+                    layout: "Tri-Motor AWD",
+                    reasoning: "You live in the future, love insane technology, and want mind-bending acceleration wrapped in luxury."
+                }
+            },
+            ar: {
+                track: {
+                    name: "بورشه 911 جي تي 3 (992)",
+                    tagline: "وحش الحلبات لعشاق السرعة الخالصة",
+                    hp: "502 حصان",
+                    time060: "3.2 ثانية",
+                    layout: "محرك خلفي، دفع خلفي",
+                    reasoning: "ما عندك صبر للسيارات البطيخة! إجاباتك كلها حلبات ودورات محرك عالية ودقة قيادة. مكانك الطبيعي خلف طارة هالمعجزة الألمانية."
+                },
+                muscle: {
+                    name: "فورد موستانج دارك هورس",
+                    tagline: "عضلات أمريكية وهيبة V8 طربية",
+                    hp: "500 حصان",
+                    time060: "3.6 ثانية",
+                    layout: "محرك أمامي، دفع خلفي",
+                    reasoning: "تعشق القوة الخام ودخان التواير وصوت الـ V8. موستانج دارك هورس تعكس شخصيتك الجريئة ورغبتك في السيطرة على الأسفلت."
+                },
+                charger: {
+                    name: "دودج تشارجر سكات باك / هيلكات",
+                    tagline: "ملك الخطوط السريعة والوقفة الهجومية",
+                    hp: "485 - 717 حصان",
+                    time060: "3.6 - 4.3 ثانية",
+                    layout: "محرك أمامي، دفع خلفي/كلي",
+                    reasoning: "تحب تلفت الانتباه وتلعب بالشارع وتدبر راسك بكل إشارة. تشارجر صوتها عالي وجريئة وتناسب شخصيتك القوية تماماً!"
+                },
+                caprice: {
+                    name: "شيفروليه كابريس كلاسيك (تراث / SS)",
+                    tagline: "أسطورة الراحة وملك عزم الـ V8 العريق",
+                    hp: "260 - 350 حصان",
+                    time060: "6.5 ثانية",
+                    layout: "محرك أمامي، دفع خلفي",
+                    reasoning: "تقدر الراحة الأصيلة، الهيبة بالشارع، والخطوط الطويلة. كابريس القديم يعطيك شعور الكنب الملكي مع روقان الكروز الحقيقي."
+                },
+                corolla: {
+                    name: "تويوتا كورولا",
+                    tagline: "الأسطورة الاعتمادية التي لا تُكسر",
+                    hp: "139 - 169 حصان",
+                    time060: "8.5 ثانية",
+                    layout: "محرك أمامي، دفع أمامي",
+                    reasoning: "تبي راحة بال، صرفية بانزين ولا أحلى، واسيارة تعيش معك للقرن القادم. كورولا هي رفيقتك الاعتمادية للحياة اليومية!"
+                },
+                altima: {
+                    name: "نيسان ألتيما (2017)",
+                    tagline: "كروزر الخطوط والدوامات اليومية",
+                    hp: "182 حصان",
+                    time060: "7.7 ثانية",
+                    layout: "محرك أمامي، دفع أمامي",
+                    reasoning: "أنت عملي، رايق، وتقضي وقت طويل بالخطوط السريعة. ألتيما 2017 تعطيك راحة وسهولة تنقل بدون تعقيد."
+                },
+                elantra: {
+                    name: "هيونداي النترا",
+                    tagline: "سيارة المدينة الذكية والعملية",
+                    hp: "147 حصان",
+                    time060: "8.1 ثانية",
+                    layout: "محرك أمامي، دفع أمامي",
+                    reasoning: "ذكي بمصاريفك، تحب التصميم النظيف، وتبي سيارة تخدمك بالزحمة وتقضيك مشاويرك بكل سلاسة وبدون عناء."
+                },
+                cerato: {
+                    name: "كيا سيراتو",
+                    tagline: "الهاتشباك / السيدان الرشيقة للشباب",
+                    hp: "147 حصان",
+                    time060: "8.3 ثانية",
+                    layout: "محرك أمامي، دفع أمامي",
+                    reasoning: "تبي سيارة خفيفة بالزحمة، سهلة بالمواقف الضيقة، مودرن وشكلها كاشخ. سيراتو تناسب جوك الشبابي والحيوي."
+                },
+                rx8: {
+                    name: "إم جي RX8 إس يو في",
+                    tagline: "إس يو في العائلات والرحلات البرية الواسعة",
+                    hp: "221 حصان",
+                    time060: "8.8 ثانية",
+                    layout: "محرك أمامي، دفع رباعي",
+                    reasoning: "تحتاج مساحة، هيبة، ودفع رباعي لطلعات البر أو تجميعات الشباب والطلعات العائلية. إم جي RX8 تعطيك كل اللي تتمناه بسعر عملي."
+                },
+                captiva: {
+                    name: "شيفروليه كابتيفا",
+                    tagline: "سيارة العائلة العملية والواسعة",
+                    hp: "148 حصان",
+                    time060: "9.5 ثانية",
+                    layout: "محرك أمامي، دفع أمامي",
+                    reasoning: "تهمك خدمة العائلة، الأغراض الكثيرة، والمساحة المريحة. كابتيفا تضمن راحة الجميع بدون أي صداع."
+                },
+                ev: {
+                    name: "لوسيد أير سافاير",
+                    tagline: "الصاروخ الكهربائي الفائق",
+                    hp: "1,234 حصان",
+                    time060: "1.89 ثانية",
+                    layout: "ثلاثة محركات، دفع كلي",
+                    reasoning: "عايش بالمستقبل، تعشق التقنية المجنونة، وتبي تسارع يطير العقل مع فخامة لا تقارن."
+                }
+            }
+        };
+
+        let currentQuestion = 0;
+        let userAnswers = [];
+
+        const welcomeScreen = document.getElementById('welcome-screen');
+        const quizScreen = document.getElementById('quiz-screen');
+        const resultScreen = document.getElementById('result-screen');
+        const thanksScreen = document.getElementById('thanks-screen');
+        const progressIndicator = document.getElementById('progress-indicator');
+        const currentQNum = document.getElementById('current-q-num');
+        const progressBar = document.getElementById('progress-bar');
+        const questionTitle = document.getElementById('question-title');
+        const optionsContainer = document.getElementById('options-container');
+        const nextBtn = document.getElementById('next-btn');
+        const prevBtn = document.getElementById('prev-btn');
+
+        function toggleLanguage() {
+            currentLang = currentLang === 'en' ? 'ar' : 'en';
+            const htmlTag = document.documentElement;
+            htmlTag.setAttribute('lang', currentLang);
+            htmlTag.setAttribute('dir', currentLang === 'ar' ? 'rtl' : 'ltr');
+            updateStaticTexts();
+            if (!quizScreen.classList.contains('hidden')) {
+                loadQuestion();
+            }
+        }
+
+        function updateStaticTexts() {
+            const t = translations[currentLang];
+            document.getElementById('lang-btn-text').textContent = t.langBtn;
+            document.getElementById('thanks-nav-btn').textContent = t.thanksNav;
+            document.getElementById('q-label').textContent = t.qLabel;
+            document.getElementById('welcome-title').textContent = t.welcomeTitle;
+            document.getElementById('welcome-desc').textContent = t.welcomeDesc;
+            document.getElementById('start-btn').textContent = t.startBtn;
+            document.getElementById('prev-btn').textContent = t.backBtn;
+            document.getElementById('result-badge').textContent = t.resultBadge;
+            document.getElementById('spec-hp-label').textContent = t.hpLabel;
+            document.getElementById('spec-060-label').textContent = t.timeLabel;
+            document.getElementById('spec-layout-label').textContent = t.layoutLabel;
+            document.getElementById('why-title').innerHTML = `<svg class="w-5 h-5 text-red-500 mr-2 rtl:mr-0 rtl:ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>${t.whyTitle}`;
+            document.getElementById('retake-btn').textContent = t.retakeBtn;
+            document.getElementById('share-btn').textContent = t.shareBtn;
+
+            document.getElementById('thanks-heading').textContent = t.thanksHeading;
+            document.getElementById('thanks-sub').textContent = t.thanksSub;
+            document.getElementById('role-susu').textContent = t.roleSusu;
+            document.getElementById('role-abumuteb').textContent = t.roleAbu;
+            document.getElementById('role-hso').textContent = t.roleHso;
+            document.getElementById('back-home-btn').textContent = t.backHomeBtn;
+        }
+
+        function showThanksPage() {
+            welcomeScreen.classList.add('hidden');
+            quizScreen.classList.add('hidden');
+            resultScreen.classList.add('hidden');
+            progressIndicator.classList.add('hidden');
+            thanksScreen.classList.remove('hidden');
+        }
+
+        function goHome() {
+            thanksScreen.classList.add('hidden');
+            quizScreen.classList.add('hidden');
+            resultScreen.classList.add('hidden');
+            progressIndicator.classList.add('hidden');
+            welcomeScreen.classList.remove('hidden');
+        }
+
+        function startQuiz() {
+            welcomeScreen.classList.add('hidden');
+            thanksScreen.classList.add('hidden');
+            quizScreen.classList.remove('hidden');
+            progressIndicator.classList.remove('hidden');
+            currentQuestion = 0;
+            userAnswers = new Array(questionsData[currentLang].length).fill(null);
+            loadQuestion();
+        }
+
+        function loadQuestion() {
+            const qList = questionsData[currentLang];
+            const q = qList[currentQuestion];
+            currentQNum.textContent = currentQuestion + 1;
+            progressBar.style.width = `${((currentQuestion + 1) / qList.length) * 100}%`;
+            questionTitle.textContent = q.title;
+
+            optionsContainer.innerHTML = '';
+            q.options.forEach((opt, index) => {
+                const isSelected = userAnswers[currentQuestion] === index;
+                const card = document.createElement('div');
+                card.className = `option-card p-4 sm:p-5 rounded-xl border border-gray-800 bg-gray-900/90 cursor-pointer flex items-center justify-between ${isSelected ? 'selected' : ''}`;
+                card.innerHTML = `
+                    <div class="flex items-center space-x-3 rtl:space-x-reverse">
+                        <div class="w-6 h-6 rounded-full border-2 ${isSelected ? 'border-red-500 bg-red-500' : 'border-gray-600'} flex items-center justify-center text-xs font-bold text-white transition">
+                            ${isSelected ? '✓' : String.fromCharCode(65 + index)}
+                        </div>
+                        <span class="text-sm sm:text-base text-gray-200 font-medium">${opt.text}</span>
+                    </div>
+                `;
+                card.onclick = () => selectOption(index);
+                optionsContainer.appendChild(card);
+            });
+
+            prevBtn.classList.toggle('hidden', currentQuestion === 0);
+            nextBtn.disabled = userAnswers[currentQuestion] === null;
+            nextBtn.textContent = currentQuestion === qList.length - 1 ? translations[currentLang].calcBtn : translations[currentLang].nextBtn;
+        }
+
+        function selectOption(index) {
+            userAnswers[currentQuestion] = index;
+            loadQuestion();
+        }
+
+        function nextQuestion() {
+            const qList = questionsData[currentLang];
+            if (userAnswers[currentQuestion] === null) return;
+            if (currentQuestion < qList.length - 1) {
+                currentQuestion++;
+                loadQuestion();
+            } else {
+                calculateResult();
+            }
+        }
+
+        function prevQuestion() {
+            if (currentQuestion > 0) {
+                currentQuestion--;
+                loadQuestion();
+            }
+        }
+
+        function calculateResult() {
+            quizScreen.classList.add('hidden');
+            progressIndicator.classList.add('hidden');
+            resultScreen.classList.remove('hidden');
+
+            const qList = questionsData[currentLang];
+            const scores = {};
+            userAnswers.forEach((ansIndex, qIndex) => {
+                if (ansIndex !== null) {
+                    const type = qList[qIndex].options[ansIndex].type;
+                    scores[type] = (scores[type] || 0) + 1;
+                }
+            });
+
+            let bestType = 'corolla';
+            let maxScore = -1;
+            for (const [type, score] of Object.entries(scores)) {
+                if (score > maxScore) {
+                    maxScore = score;
+                    bestType = type;
+                }
+            }
+
+            const db = carsDatabase[currentLang];
+            const car = db[bestType] || db.corolla;
+
+            document.getElementById('result-car-name').textContent = car.name;
+            document.getElementById('result-tagline').textContent = car.tagline;
+            document.getElementById('spec-hp').textContent = car.hp;
+            document.getElementById('spec-060').textContent = car.time060;
+            document.getElementById('spec-layout').textContent = car.layout;
+            document.getElementById('result-reasoning').textContent = car.reasoning;
+        }
+
+        function restartQuiz() {
+            resultScreen.classList.add('hidden');
+            welcomeScreen.classList.remove('hidden');
+        }
+
+        function shareResult() {
+            const carName = document.getElementById('result-car-name').textContent;
+            const text = currentLang === 'ar' 
+                ? `طلعت سيارتي المناسبة في اختبار CarMatch هي ${carName}! جرب الاختبار لتعرف سيارتك.`
+                : `I just took the CarMatch quiz and my ultimate car match is the ${carName}! Take the test to find yours.`;
+            
+            navigator.clipboard.writeText(text).then(() => {
+                alert(translations[currentLang].copiedAlert);
+            });
+        }
+    </script>
+</body>
+</html>
