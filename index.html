@@ -180,7 +180,7 @@
 
         <!-- Result Screen -->
         <div id="result-screen" class="hidden glass-card rounded-2xl p-6 sm:p-10 w-full max-w-3xl">
-            <div class="text-center mb-8">
+            <div class="text-center mb-6">
                 <span id="result-badge" class="px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest bg-red-500/20 text-red-400 border border-red-500/30 heading-font">Optimal Match Identified</span>
                 <h1 id="result-car-name" class="heading-font text-3xl sm:text-4xl font-black mt-3 text-white"></h1>
                 <p id="result-tagline" class="text-gray-400 mt-2 italic"></p>
@@ -219,7 +219,7 @@
             </div>
         </div>
 
-        <!-- Thanks To Screen -->
+        <!-- Thanks To Screen (Ordered: Susu -> Abu Muteb -> Hso -> Loly -> Reo) -->
         <div id="thanks-screen" class="hidden glass-card rounded-2xl p-8 sm:p-12 text-center w-full max-w-2xl">
             <div class="inline-block p-4 bg-orange-500/10 rounded-2xl border border-orange-500/20 mb-6 text-orange-500">
                 <svg class="w-12 h-12 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
@@ -240,6 +240,14 @@
                     <span class="font-bold text-white heading-font">Hso</span>
                     <span class="px-3 py-1 rounded-full text-xs font-bold bg-emerald-500/20 text-emerald-400 border border-emerald-500/30" id="role-hso">Wannabe Partner</span>
                 </div>
+                <div class="bg-gray-900/80 p-4 rounded-xl border border-gray-800 flex items-center justify-between">
+                    <span class="font-bold text-white heading-font">Loly</span>
+                    <span class="px-3 py-1 rounded-full text-xs font-bold bg-pink-500/20 text-pink-400 border border-pink-500/30" id="role-loly">Group Manager</span>
+                </div>
+                <div class="bg-gray-900/80 p-4 rounded-xl border border-gray-800 flex items-center justify-between">
+                    <span class="font-bold text-white heading-font">Reo</span>
+                    <span class="px-3 py-1 rounded-full text-xs font-bold bg-purple-500/20 text-purple-400 border border-purple-500/30" id="role-reo">Birthday Boy</span>
+                </div>
             </div>
 
             <button onclick="goHome()" class="px-6 py-3 bg-red-600 hover:bg-red-500 text-white font-bold rounded-xl heading-font text-sm tracking-wider transition shadow-lg shadow-red-600/30" id="back-home-btn">
@@ -251,7 +259,7 @@
 
     <!-- Footer -->
     <footer class="relative z-10 w-full py-4 text-center text-xs text-gray-500 border-t border-gray-900">
-        CarMatch &copy; 2026 &bull; Made with passion by Susu, Abu Muteb & Hso
+        CarMatch &copy; 2026 &bull; Made with passion by Susu, Abu Muteb, Hso, Loly & Reo
     </footer>
 
     <script>
@@ -282,6 +290,8 @@
                 roleSusu: "Founder",
                 roleAbu: "Car Lover",
                 roleHso: "Wannabe Partner",
+                roleLoly: "Group Manager",
+                roleReo: "Birthday Boy",
                 backHomeBtn: "Back to Home"
             },
             ar: {
@@ -305,9 +315,11 @@
                 copiedAlert: "تم نسخ ملخص النتيجة إلى الحافظة!",
                 thanksHeading: "شكر خاص وتحية",
                 thanksSub: "هالمشروع ما كان بيتحرك لولا هالأسامين الرهيبة:",
-                roleSusu: "المؤسسة",
+                roleSusu: "المؤسس",
                 roleAbu: "عاشق السيارات",
                 roleHso: "الشريك المستقبلي",
+                roleLoly: "مدير القروب",
+                roleReo: "فتى الميلاد",
                 backHomeBtn: "الرجوع للرئيسية"
             }
         };
@@ -820,6 +832,8 @@
             document.getElementById('role-susu').textContent = t.roleSusu;
             document.getElementById('role-abumuteb').textContent = t.roleAbu;
             document.getElementById('role-hso').textContent = t.roleHso;
+            document.getElementById('role-loly').textContent = t.roleLoly;
+            document.getElementById('role-reo').textContent = t.roleReo;
             document.getElementById('back-home-btn').textContent = t.backHomeBtn;
         }
 
