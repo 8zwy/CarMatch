@@ -146,7 +146,7 @@
             </div>
             <h1 id="welcome-title" class="heading-font text-3xl sm:text-4xl font-black mb-4 tracking-wide text-white">Find Your Ultimate Car Match</h1>
             <p id="welcome-desc" class="text-gray-400 mb-8 leading-relaxed">
-                Take our super casual 15-question car quiz! Let's figure out your vibe and match you with your real-world dream ride—whether it's an old-school legend, a daily commuter, or a pure beast.
+                Take our 15-question car quiz featuring 36 unique dream rides across all classes—from track monsters, supercars, and legendary SUVs like the Land Cruiser and Patrol to daily commuters like the Camry and Accent!
             </p>
             <button id="start-btn" onclick="startQuiz()" class="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-red-600 to-red-700 hover:from-red-500 hover:to-red-600 text-white font-bold heading-font tracking-wider rounded-xl shadow-lg shadow-red-600/40 transition-all transform hover:-translate-y-0.5">
                 START THE VIBE CHECK
@@ -272,7 +272,7 @@
                 langBtn: "العربية",
                 thanksNav: "Thanks to",
                 welcomeTitle: "Find Your Ultimate Car Match",
-                welcomeDesc: "Take our super casual 15-question car quiz! Let's figure out your vibe and match you with your real-world dream ride—whether it's an old-school legend, a daily commuter, or a pure beast.",
+                welcomeDesc: "Take our 15-question car quiz featuring 36 unique dream rides across all classes—from track monsters, supercars, and legendary SUVs like the Land Cruiser and Patrol to daily commuters like the Camry and Accent!",
                 startBtn: "START THE VIBE CHECK",
                 nextBtn: "Next Question",
                 calcBtn: "Show My Ride!",
@@ -300,7 +300,7 @@
                 langBtn: "English",
                 thanksNav: "شكراً لـ",
                 welcomeTitle: "اعثر على سيارتك المناسبة",
-                welcomeDesc: "خذ اختبار السيارات الخفيف المكون من 15 سؤالاً! دعنا نكتشف ذوقك ونطابقك مع سيارة أحلامك الحقيقية—سواء كانت أسطورة قديمة، سيارة دوام، أو وحش سرعة.",
+                welcomeDesc: "خذ اختبار السيارات المكون من 15 سؤالاً والذي يضم 36 سيارة أحلام فريدة من نوعها عبر جميع الفئات—من وحوش الحلبات والسيارات الخارقة وجيبات اللاندكروزر والباترول إلى سيارات الدوام مثل الكامري والأكسنت!",
                 startBtn: "ابدأ اختبار المزاج",
                 nextBtn: "السؤال التالي",
                 calcBtn: "اعرض سيارتي!",
@@ -332,7 +332,7 @@
                         { text: "Give me high-revs, screaming naturally aspirated soul!", type: "track" },
                         { text: "Twin-turbo punch pushing me back into the seat.", type: "muscle" },
                         { text: "Silent electric rocket thrust, zero lag whatsoever.", type: "ev" },
-                        { text: "Just get me to work reliably without draining my wallet.", type: "corolla" }
+                        { text: "V12 Italian exotic masterpiece screaming past 9,000 RPM.", type: "supercar" }
                     ]
                 },
                 {
@@ -341,23 +341,23 @@
                         { text: "Low-slung 2-door coupe or weekend track toy.", type: "track" },
                         { text: "A massive, intimidating American muscle sedan or cruiser.", type: "charger" },
                         { text: "A solid daily commuter sedan to beat city traffic.", type: "elantra" },
-                        { text: "A roomy SUV for family road trips and grocery runs.", type: "rx8" }
+                        { text: "A heavy-duty pickup truck ready for any terrain.", type: "pickup" }
                     ]
                 },
                 {
-                    title: "3. How do you feel about old-school cruisers?",
+                    title: "3. How do you feel about old-school cruisers & legendary 4x4s?",
                     options: [
                         { text: "Love them! Give me a classic heavy cruiser with massive road presence.", type: "caprice" },
                         { text: "Too heavy, I prefer sharp modern corner carvers.", type: "track" },
-                        { text: "They're cool for car meets, but give me modern fuel economy.", type: "altima" },
+                        { text: "Give me an unstoppable desert king like a Land Cruiser or Patrol.", type: "landcruiser" },
                         { text: "Not my style, I want something compact and zippy.", type: "cerato" }
                     ]
                 },
                 {
                     title: "4. What transmission setup are you rocking with?",
                     options: [
-                        { text: "Strictly 6-speed manual, heel-toe shifting baby!", type: "track" },
-                        { text: "Smooth automatic that handles highway cruising effortlessly.", type: "altima" },
+                        { text: "Strictly 6-speed manual, heel-toe shifting baby!", type: "hot_hatch" },
+                        { text: "Smooth automatic that handles highway cruising effortlessly.", type: "luxury_sedan" },
                         { text: "Reliable CVT or standard automatic for stress-free traffic jams.", type: "corolla" },
                         { text: "Heavy-duty automatic built for brutal acceleration.", type: "charger" }
                     ]
@@ -368,16 +368,16 @@
                         { text: "Empty winding backroads and canyon runs on weekends.", type: "track" },
                         { text: "Cruising down the main highway blaring music.", type: "charger" },
                         { text: "Stuck in daily rush-hour traffic commuting to work/uni.", type: "corolla" },
-                        { text: "Weekend family getaways and parking lots.", type: "captiva" }
+                        { text: "Off-road desert dunes, trails, and rough tracks.", type: "offroad" }
                     ]
                 },
                 {
                     title: "6. What kind of exhaust note makes you smile?",
                     options: [
                         { text: "A thunderous American V8 roar that scares pedestrians.", type: "charger" },
-                        { text: "A deep, nostalgic V8 burble from a classic land yacht.", type: "caprice" },
-                        { text: "A quiet, peaceful hum so my neighbors don't hate me.", type: "corolla" },
-                        { text: "Pure futuristic electric whine or subtle turbo spool.", type: "ev" }
+                        { text: "A deep, nostalgic V8 burble from a classic land yacht or Escalade.", type: "escalade2006" },
+                        { text: "A quiet, peaceful hum so my neighbors don't hate me.", type: "camry" },
+                        { text: "A shrieking Ferrari V12 or high-pitched exotic howl.", type: "supercar" }
                     ]
                 },
                 {
@@ -385,17 +385,17 @@
                     options: [
                         { text: "Minimalist racing bucket seats and digital telemetry gauges.", type: "track" },
                         { text: "Comfy leather couch-like seats built for cross-country comfort.", type: "caprice" },
-                        { text: "Practical cupholders, good AC, and simple Bluetooth connection.", type: "elantra" },
-                        { text: "Spacious multi-row seating with tons of cargo room.", type: "rx8" }
+                        { text: "Ultra-luxury executive massage seats and ambient lighting.", type: "luxury_sedan" },
+                        { text: "Spacious multi-row seating with tons of cargo room.", type: "suv_luxury" }
                     ]
                 },
                 {
                     title: "8. What's your driving style personality?",
                     options: [
                         { text: "Aggressive street racer looking for the next green light.", type: "charger" },
-                        { text: "Chill cruiser relaxing with one hand on the steering wheel.", type: "caprice" },
-                        { text: "Smart budget planner saving every drop of fuel.", type: "corolla" },
-                        { text: "Busy bee running errands and juggling life.", type: "captiva" }
+                        { text: "Chill cruiser relaxing with one hand on the steering wheel.", type: "luxury_sedan" },
+                        { text: "Smart budget planner saving every drop of fuel.", type: "accent" },
+                        { text: "Fearless adventurer conquering mud and sand.", type: "patrol" }
                     ]
                 },
                 {
@@ -403,8 +403,8 @@
                     options: [
                         { text: "Classic Chevrolet V8 heritage (pure Americana).", type: "caprice" },
                         { text: "Dodge attitude: bold, loud, and unapologetic.", type: "charger" },
-                        { text: "Toyota/Nissan reliability: bulletproof and practical.", type: "corolla" },
-                        { text: "Korean/Chinese modern tech style (Kia, Hyundai, MG).", type: "cerato" }
+                        { text: "Toyota reliability: bulletproof and practical.", type: "camry" },
+                        { text: "British luxury royalty (Range Rover).", type: "suv_luxury" }
                     ]
                 },
                 {
@@ -412,8 +412,8 @@
                     options: [
                         { text: "I change my oil once every five years and hope for the best.", type: "altima" },
                         { text: "It just runs forever with zero complaints, absolute tank.", type: "corolla" },
-                        { text: "I spend every weekend modding and tuning it.", type: "track" },
-                        { text: "Keep it clean, serviced, and ready for family duty.", type: "captiva" }
+                        { text: "I spend every weekend modding and tuning it.", type: "classic_jpn" },
+                        { text: "Full dealership service package with no expenses spared.", type: "luxury_sedan" }
                     ]
                 },
                 {
@@ -422,25 +422,25 @@
                         { text: "My worst enemy—I live life a quarter-mile at a time.", type: "charger" },
                         { text: "Cruise control set strictly to the speed limit, thank you.", type: "corolla" },
                         { text: "I know where every camera is hidden on my daily route.", type: "altima" },
-                        { text: "Chill and steady pace, no rush.", type: "elantra" }
+                        { text: "Doesn't matter when you have supercar performance on tap.", type: "supercar" }
                     ]
                 },
                 {
                     title: "12. What's your go-to weekend parking spot?",
                     options: [
                         { text: "Front row at Cars & Coffee next to other modded whips.", type: "charger" },
-                        { text: "Any tight parallel parking spot because my car is compact and easy.", type: "cerato" },
-                        { text: "The shaded spot under the building to keep the paint safe.", type: "elantra" },
-                        { text: "Right by the mega-mall entrance for easy grocery loading.", type: "captiva" }
+                        { text: "Any tight parallel parking spot because my car is compact and easy.", type: "accent" },
+                        { text: "Valet parking right at the grand hotel entrance.", type: "luxury_sedan" },
+                        { text: "Parked right on top of a sand dune overlooking the horizon.", type: "patrol" }
                     ]
                 },
                 {
                     title: "13. What color paint job matches your personality?",
                     options: [
                         { text: "In-your-face Hellcat green, bright red, or matte black.", type: "charger" },
-                        { text: "Clean pearl white or silver that never looks dirty.", type: "corolla" },
-                        { text: "Deep midnight blue or executive dark gray.", type: "altima" },
-                        { text: "Stylish metallic gray or trendy urban tone.", type: "rx8" }
+                        { text: "Clean pearl white or silver that never looks dirty.", type: "camry" },
+                        { text: "Rosso Corsa red or metallic supercar yellow.", type: "supercar" },
+                        { text: "Midnight black or executive stealth gray.", type: "escalade2006" }
                     ]
                 },
                 {
@@ -448,8 +448,8 @@
                     options: [
                         { text: "'Bro, slow down, you're gonna get us pulled over!'", type: "charger" },
                         { text: "'So smooth I could take a nap in the passenger seat.'", type: "caprice" },
-                        { text: "'Reliable Uber driver energy.'", type: "elantra" },
-                        { text: "'Always on time, always practical.'", type: "corolla" }
+                        { text: "'Reliable Uber driver energy.'", type: "accent" },
+                        { text: "'Always ready to hit the dirt tracks and camp out.'", type: "landcruiser" }
                     ]
                 },
                 {
@@ -457,8 +457,8 @@
                     options: [
                         { text: "Turn heads, make noise, and burn rubber.", type: "charger" },
                         { text: "Pure timeless comfort and cruising vibes.", type: "caprice" },
-                        { text: "Zero stress, great gas mileage, bulletproof reliability.", type: "corolla" },
-                        { text: "Utility, style, and room for everyone.", type: "captiva" }
+                        { text: "Zero stress, great gas mileage, bulletproof reliability.", type: "camry" },
+                        { text: "Uncompromised prestige, speed, and status.", type: "luxury_sedan" }
                     ]
                 }
             ],
@@ -469,7 +469,7 @@
                         { text: "عطني دورات عالية وصوت تنفس طبيعي طربي!", type: "track" },
                         { text: "تيربو مزدوج يلصقني بالمرتبة من القوة.", type: "muscle" },
                         { text: "دفع صاروخي كهربائي صامت بدون أي تأخير.", type: "ev" },
-                        { text: "أهم شي يوصلني للدوام بدون ما يصرف بانزين واجد.", type: "corolla" }
+                        { text: "محرك خارق V12 إيطالي يعزف فوق 9000 دورة.", type: "supercar" }
                     ]
                 },
                 {
@@ -478,23 +478,23 @@
                         { text: "كوبيه نازلة بابين حق تفحيط ونهاية أسبوع.", type: "track" },
                         { text: "سيدان أمريكية عضلية هجومية ومرعبة.", type: "charger" },
                         { text: "سيارة سيدان عملية للزحمة وخطوط المدينة.", type: "elantra" },
-                        { text: "إس يو في عائلية واسعة للطلعات والأغراض.", type: "rx8" }
+                        { text: "تانيت / بيك آب ثقيل جاهز لكل التضاريس.", type: "pickup" }
                     ]
                 },
                 {
-                    title: "3. وش رايك بالسيارات الكلاسيكية القديمة (مثل لاند يات)؟",
+                    title: "3. وش رايك بالكروزارات القديمة وجيبات البر الأسطورية؟",
                     options: [
                         { text: "أعشقها! عطني كابريس قديم بهيبة وراحة ريزدنس.", type: "caprice" },
                         { text: "ثقيلة مرة، أفضل السيارات الرياضية الخفيفة.", type: "track" },
-                        { text: "حلوة للتجمعات بس أبي اقتصاد فودر حديث.", type: "altima" },
-                        { text: "مو جوي، أبي شي صغير وصغير وخفيف.", type: "cerato" }
+                        { text: "عطني ملك الصحراء لاندكروزر أو باترول لا يُغلب.", type: "landcruiser" },
+                        { text: "مو جوي، أبي شي صغير وخفيف.", type: "cerato" }
                     ]
                 },
                 {
                     title: "4. وش نظام القير اللي تفضله؟",
                     options: [
-                        { text: "عادي 6 نمر، تعشيق يدوي ومتعة حقيقية!", type: "track" },
-                        { text: "أوتوماتيك ناعم يريحني بالخطوط السريعة.", type: "altima" },
+                        { text: "عادي تعشيق يدوي ومتعة حقيقية للهاتشباك!", type: "hot_hatch" },
+                        { text: "أوتوماتيك ناعم يريحني بالخطوط الطويلة.", type: "luxury_sedan" },
                         { text: "قير CVT عملي ومريح للزحمة وما يطلب شي.", type: "corolla" },
                         { text: "قير ثقيل مخصص للسرعة والقوة.", type: "charger" }
                     ]
@@ -504,17 +504,17 @@
                     options: [
                         { text: "الطرق الجبلية والخطوط الفاضية يوم الخميس.", type: "track" },
                         { text: "أفحط على الخط السريع وأسمع أغاني بصوت عالي.", type: "charger" },
-                        { text: "متعلق بزحمة الدوام والشارع التجاري كل صباح.", type: "corolla" },
-                        { text: "طلعات عائلية ومواقف البقالات والجمعيات.", type: "captiva" }
+                        { text: "متعلق بزحمة الدوام والشارع التجاري كل صباح.", type: "camry" },
+                        { text: "طعوس البر، الكشتات، والمسارات الوعرة.", type: "patrol" }
                     ]
                 },
                 {
                     title: "6. أي صوت عادم يخليك تبتسم؟",
                     options: [
                         { text: "هدير V8 أمريكي مزلزل يخوف اللي ماشين بالشارع.", type: "charger" },
-                        { text: "صوت V8 هادئ ورايق حق سيارات الفخامة القديمة.", type: "caprice" },
-                        { text: "صوت هادئ كأنها مطفية عشان جيراني ما يزعجهم.", type: "corolla" },
-                        { text: "صفير كهربائي مستقبلي أو تيربو خفيف.", type: "ev" }
+                        { text: "نغمة V8 عميقة وفظيعة من كاديلاك اسكاليد 2006.", type: "escalade2006" },
+                        { text: "صوت هادئ ومريح ما يسمعه أحد.", type: "camry" },
+                        { text: "صراخ محرك فيراري خارق لا يُنسى.", type: "supercar" }
                     ]
                 },
                 {
@@ -522,17 +522,17 @@
                     options: [
                         { text: "مقاعد سباق كربون فايبر وعدادات أداء رقمية.", type: "track" },
                         { text: "مراتب كنب أمريكية واسعة ومريحة كأنك ببيتك.", type: "caprice" },
-                        { text: "أكواب قهوة، مكيف بارد، وبلوتوث سريع وواضح.", type: "elantra" },
-                        { text: "مقاعد كثيرة ومساحة تخزين تشيل كل أغراض البيت.", type: "rx8" }
+                        { text: "مقاعد مساج ملكية فاخرة وإضاءة محيطية.", type: "luxury_sedan" },
+                        { text: "مقاعد كثيرة ومساحة تخزين ضخمة للعائلة.", type: "suv_luxury" }
                     ]
                 },
                 {
                     title: "8. وش شخصيتك وأنت تسوق؟",
                     options: [
                         { text: "متهور بالشارع وأول واحد ينطلق عند الإشارة.", type: "charger" },
-                        { text: "رايق وساحب على العالم ويد وحدة على الطارة.", type: "caprice" },
-                        { text: "موفر اقتصادي يحسب حساب كل هللة بانزين.", type: "corolla" },
-                        { text: "مشغول ومشاويري ماتخلص يمين ويسار.", type: "captiva" }
+                        { text: "رايق وساحب على العالم ويد وحدة على الطارة.", type: "luxury_sedan" },
+                        { text: "موفر اقتصادي يحسب حساب كل هللة بانزين.", type: "accent" },
+                        { text: "مغامر شجاع يتحدى الطين والرمال.", type: "landcruiser" }
                     ]
                 },
                 {
@@ -540,8 +540,8 @@
                     options: [
                         { text: "تراث شفروليه العريق والV8 الأصلي.", type: "caprice" },
                         { text: "هيبة دودج: جريئة، صوتها عالي وماتعتذر لأحد.", type: "charger" },
-                        { text: "اعتمادية تويوتا ونيسان: حديد لا ينكسر وعملي.", type: "corolla" },
-                        { text: "ستايل السيارات الكورية والصينية الحديثة والتقنية.", type: "cerato" }
+                        { text: "اعتمادية تويوتا: حديد لا ينكسر وعملي.", type: "camry" },
+                        { text: "ملوك الفخامة البريطانية (رنج روفر).", type: "suv_luxury" }
                     ]
                 },
                 {
@@ -549,8 +549,8 @@
                     options: [
                         { text: "أغير الزيت كل 5 سنين وأتوكل على الله.", type: "altima" },
                         { text: "تشتغل كدادة أبدية بدون أي مشاكل أو أعطال.", type: "corolla" },
-                        { text: "أقضي كل ويكند ألعب بالتعديل والترهيم.", type: "track" },
-                        { text: "أهتم بنظافتها وصيانتها الدورية أول بأول عشان العائلة.", type: "captiva" }
+                        { text: "أقضي كل ويكند ألعب بالتعديل والترهيم الياباني.", type: "classic_jpn" },
+                        { text: "صيانة الوكالة الشاملة وبدون أي تنازلات.", type: "luxury_sedan" }
                     ]
                 },
                 {
@@ -559,25 +559,25 @@
                         { text: "عدوي اللدود—أعيش حياتي ربع ميل بربع ميل.", type: "charger" },
                         { text: "مثبت السرعة على النظام بالضبط، شكراً ساهر.", type: "corolla" },
                         { text: "حافظ مكان كل كاميرا ساهر بطريقي للدوام حفظ.", type: "altima" },
-                        { text: "ماشي على مهلي وبسلطنة تامة.", type: "elantra" }
+                        { text: "ما تفرق معي لما يكون معي أداء سيارة خارقة.", type: "supercar" }
                     ]
                 },
                 {
                     title: "12. وين تحب توقف سيارتك بالويكند؟",
                     options: [
                         { text: "أول صفة عند التجمع جنب الشباب والمواتر الملغمة.", type: "charger" },
-                        { text: "بأي موقف ضيق لأن سيارتي صغيرة وسهلة الاصطفاف.", type: "cerato" },
-                        { text: "بالمظلّة تحت العمارة عشان البوية ما تحترق من الشمس.", type: "elantra" },
-                        { text: "قدام باب السوبرماركت الكبير عشان نزول الأغراض.", type: "captiva" }
+                        { text: "بأي موقف ضيق لأن سيارتي صغيرة وسهلة الاصطفاف.", type: "accent" },
+                        { text: "مواقف الفندق الفاخر الرئيسية.", type: "luxury_sedan" },
+                        { text: "فوق أعلى طعس بالبر مع إطلالة أفقية.", type: "patrol" }
                     ]
                 },
                 {
                     title: "13. وش لون البوية اللي يعبر عن شخصيتك؟",
                     options: [
                         { text: "أخضر هيلكات صاخب، أحمر فاقع، أو أسود مطفي.", type: "charger" },
-                        { text: "أبيض لؤلؤي أو فضي ما يبان فيه الغبار أبداً.", type: "corolla" },
-                        { text: "أزرق ليلي غامق أو رمادي رسمي فخم.", type: "altima" },
-                        { text: "رمادي معدني أنيق أو لون شبابي مودرن.", type: "rx8" }
+                        { text: "أبيض لؤلؤي أو فضي ما يبان فيه الغبار أبداً.", type: "camry" },
+                        { text: "أحمر فريراي فاقع أو أصفر رياضي.", type: "supercar" },
+                        { text: "أسود ملكي أو رمادي استراتيجي فخم.", type: "escalade2006" }
                     ]
                 },
                 {
@@ -585,8 +585,8 @@
                     options: [
                         { text: "'ياخي خف علينا بتصيدنا ساهر وتحطنا بداهية!'", type: "charger" },
                         { text: "'سواقتك ناعمة كأننا قاعدين بكنب بيت مو سيارة.'", type: "caprice" },
-                        { text: "'سواق تكاسي محترف وراكد.'", type: "elantra" },
-                        { text: "'مواظب وعملي وما عندك لفات واجد.'", type: "corolla" }
+                        { text: "'سواق تكاسي محترف وراكد.'", type: "accent" },
+                        { text: "'دايم جاهز لخطوط البر والمخيمات والطعوس.'", type: "landcruiser" }
                     ]
                 },
                 {
@@ -594,8 +594,8 @@
                     options: [
                         { text: "ألفت الأنظار، أسوي صوت، وأحرق تواير.", type: "charger" },
                         { text: "راحة أبدية وراوقان وخطوط طويلة.", type: "caprice" },
-                        { text: "بدون وجع راس، صرفية بنزين صفر، واعتمادية تامة.", type: "corolla" },
-                        { text: "مساحة، كشخة، وتشيل العائلة والربع معك.", type: "captiva" }
+                        { text: "بدون وجع راس، صرفية بنزين صفر، واعتمادية تامة.", type: "camry" },
+                        { text: "هيبة لا تقارن، سرعة مطلقة، ومكانة عالية.", type: "luxury_sedan" }
                     ]
                 }
             ]
@@ -603,13 +603,14 @@
 
         const carsDatabase = {
             en: {
+                // --- ORIGINAL 18 CARS ---
                 track: {
                     name: "Porsche 911 GT3 (992)",
                     tagline: "The Track Weapon for Pure Speed Freaks",
                     hp: "502 HP",
                     time060: "3.2 sec",
                     layout: "Rear-Engine, RWD",
-                    reasoning: "You have zero patience for slow cars. Your answers scream track days, high revs, and absolute precision driving. You belong behind the wheel of a screaming German masterpiece."
+                    reasoning: "You have zero patience for slow cars. Your answers scream track days, high revs, and absolute precision driving."
                 },
                 muscle: {
                     name: "Ford Mustang Dark Horse",
@@ -617,7 +618,7 @@
                     hp: "500 HP",
                     time060: "3.6 sec",
                     layout: "Front-Engine, RWD",
-                    reasoning: "You love raw power, tire smoke, and V8 rumble. The Dark Horse matches your bold energy and desire to dominate the asphalt."
+                    reasoning: "You love raw power, tire smoke, and V8 rumble. The Dark Horse matches your bold energy on the asphalt."
                 },
                 charger: {
                     name: "Dodge Charger Scat Pack / Hellcat",
@@ -625,7 +626,7 @@
                     hp: "485 - 717 HP",
                     time060: "3.6 - 4.3 sec",
                     layout: "Front-Engine, RWD/AWD",
-                    reasoning: "You love making noise, turning heads at every red light, and dominating the highway. The Charger is loud, proud, and fits your bold personality perfectly!"
+                    reasoning: "You love making noise, turning heads at every red light, and dominating the highway with unmatched attitude."
                 },
                 caprice: {
                     name: "Chevrolet Caprice Classic (Vintage / SS)",
@@ -633,7 +634,7 @@
                     hp: "260 - 350 HP",
                     time060: "6.5 sec",
                     layout: "Front-Engine, RWD Land Yacht",
-                    reasoning: "You appreciate old-school comfort, massive road presence, and smooth cruising. A classic Caprice gives you couch-like seating with true cruiser vibes."
+                    reasoning: "You appreciate old-school comfort, massive road presence, and smooth cruising couch-like seating."
                 },
                 corolla: {
                     name: "Toyota Corolla",
@@ -641,7 +642,7 @@
                     hp: "139 - 169 HP",
                     time060: "8.5 sec",
                     layout: "Front-Engine, FWD",
-                    reasoning: "You want zero stress, stellar fuel efficiency, and a car that will literally outlive the universe. The Corolla is your bulletproof companion for daily life!"
+                    reasoning: "You want zero stress, stellar fuel efficiency, and a car that will literally outlive the universe."
                 },
                 altima: {
                     name: "Nissan Altima (2017)",
@@ -649,7 +650,7 @@
                     hp: "182 HP",
                     time060: "7.7 sec",
                     layout: "Front-Engine, FWD",
-                    reasoning: "You're practical, laid-back, and spend plenty of time cruising highways. The 2017 Altima gives you comfortable seating and easy commuting energy."
+                    reasoning: "You're practical, laid-back, and spend plenty of time cruising highways effortlessly."
                 },
                 elantra: {
                     name: "Hyundai Elantra",
@@ -657,7 +658,7 @@
                     hp: "147 HP",
                     time060: "8.1 sec",
                     layout: "Front-Engine, FWD",
-                    reasoning: "You are smart with your money, love clean styling, and need a reliable tech-filled ride to zip through city streets without breaking a sweat."
+                    reasoning: "You are smart with your money, love clean styling, and need a reliable tech-filled ride."
                 },
                 cerato: {
                     name: "Kia Cerato",
@@ -665,7 +666,7 @@
                     hp: "147 HP",
                     time060: "8.3 sec",
                     layout: "Front-Engine, FWD",
-                    reasoning: "You want something agile, easy to park in tight spots, modern, and stylish. The Cerato matches your vibrant young-professional vibe."
+                    reasoning: "You want something agile, easy to park in tight spots, modern, and stylish."
                 },
                 rx8: {
                     name: "MG RX8 SUV",
@@ -673,7 +674,7 @@
                     hp: "221 HP",
                     time060: "8.8 sec",
                     layout: "Front-Engine, 4WD",
-                    reasoning: "You need space, utility, and road presence for family trips or group hangouts. The MG RX8 gives you multi-row seating and 4WD capability for any outing."
+                    reasoning: "You need space, utility, and road presence for family trips or group hangouts."
                 },
                 captiva: {
                     name: "Chevrolet Captiva",
@@ -681,7 +682,7 @@
                     hp: "148 HP",
                     time060: "9.5 sec",
                     layout: "Front-Engine, FWD",
-                    reasoning: "You're all about family duty, grocery runs, and practical space. The Captiva keeps everyone comfortable with zero hassle."
+                    reasoning: "You're all about family duty, grocery runs, and practical space with zero hassle."
                 },
                 ev: {
                     name: "Lucid Air Sapphire",
@@ -689,17 +690,220 @@
                     hp: "1,234 HP",
                     time060: "1.89 sec",
                     layout: "Tri-Motor AWD",
-                    reasoning: "You live in the future, love insane technology, and want mind-bending acceleration wrapped in luxury."
+                    reasoning: "You live in the future, love insane technology, and want mind-bending electric acceleration."
+                },
+                suv_luxury: {
+                    name: "Range Rover Sport SV",
+                    tagline: "The Ultimate Luxury Performance SUV",
+                    hp: "626 HP",
+                    time060: "3.6 sec",
+                    layout: "Front-Engine, AWD",
+                    reasoning: "You demand absolute luxury, unmatched road presence, and high performance across any landscape."
+                },
+                pickup: {
+                    name: "Ford F-150 Raptor R",
+                    tagline: "The Supercharged Desert Predator",
+                    hp: "720 HP",
+                    time060: "3.9 sec",
+                    layout: "Front-Engine, 4WD Truck",
+                    reasoning: "You are unstoppable off-road, love massive supercharged V8 power, and conquer sand dunes with ease."
+                },
+                hot_hatch: {
+                    name: "Honda Civic Type R (FL5)",
+                    tagline: "The Ultimate Front-Wheel-Drive Track Master",
+                    hp: "315 HP",
+                    time060: "4.9 sec",
+                    layout: "Front-Engine, FWD",
+                    reasoning: "You love manual shifting, sharp handling, and corner-carving precision without needing a supercar budget."
+                },
+                supercar: {
+                    name: "Ferrari 458 Italia",
+                    tagline: "The Masterpiece of Naturally Aspirated Italian V12/V8 Soul",
+                    hp: "562 HP",
+                    time060: "3.4 sec",
+                    layout: "Mid-Engine, RWD",
+                    reasoning: "You crave pure exotic beauty, ear-piercing high-revving exhaust notes, and absolute head-turning fame."
+                },
+                classic_jpn: {
+                    name: "Nissan Skyline GT-R V-Spec II (R34)",
+                    tagline: "The Legendary Godzillla JDM Icon",
+                    hp: "327 HP",
+                    time060: "4.6 sec",
+                    layout: "Twin-Turbo, ATTESA AWD",
+                    reasoning: "You bleed JDM tuning culture and revere legendary twin-turbo inline-6 heritage."
+                },
+                luxury_sedan: {
+                    name: "Mercedes-Benz S-Class (S580)",
+                    tagline: "The Pinnacle of Executive World Comfort",
+                    hp: "496 HP",
+                    time060: "4.4 sec",
+                    layout: "Twin-Turbo V8, AWD",
+                    reasoning: "You have arrived. You value supreme executive status, cutting-edge tech, and absolute velvet-smooth travel."
+                },
+                offroad: {
+                    name: "Jeep Wrangler Rubicon 392",
+                    tagline: "The V8 Solid-Axle Off-Road Beast",
+                    hp: "470 HP",
+                    time060: "4.5 sec",
+                    layout: "Front-Engine, 4x4 V8",
+                    reasoning: "You want top-tier off-road capability combined with a thunderous V8 engine roar in every environment."
+                },
+
+                // --- 18 NEW CARS ADDED ---
+                camry: {
+                    name: "Toyota Camry (Grand Touring / HEV)",
+                    tagline: "The Ultimate King of Daily Commuters & Fleet Reliability",
+                    hp: "208 - 232 HP",
+                    time060: "7.4 sec",
+                    layout: "Front-Engine, FWD",
+                    reasoning: "You value smart fuel economy, stylish modern road presence, and a bulletproof daily commuter that never lets you down."
+                },
+                landcruiser: {
+                    name: "Toyota Land Cruiser (LC300 VXR)",
+                    tagline: "The Undisputed King of Desert Dunes & Luxury Off-Roading",
+                    hp: "409 HP",
+                    time060: "6.7 sec",
+                    layout: "Twin-Turbo V6, Full-Time 4WD",
+                    reasoning: "You demand legendary durability, immense prestige, and the ultimate capability to conquer harsh desert tracks and highways alike."
+                },
+                patrol: {
+                    name: "Nissan Patrol (V8 LE / Super Safari)",
+                    tagline: "The Desert Hero & Highway Titan",
+                    hp: "400 - 428 HP",
+                    time060: "6.3 sec",
+                    layout: "Front-Engine, 4WD",
+                    reasoning: "You live for powerful V8 muscle under the hood, massive street respect, and ruling both the highway and the sand dunes."
+                },
+                escalade2006: {
+                    name: "Cadillac Escalade (2006 Vintage Gen 2)",
+                    tagline: "The OG Hip-Hop V8 Luxury Land Yacht",
+                    hp: "345 HP",
+                    time060: "7.8 sec",
+                    layout: "V8 Engine, AWD",
+                    reasoning: "You appreciate old-school early 2000s gangster swagger, chrome wheels, and the deep roar of a classic 6.0L Vortec V8."
+                },
+                accent: {
+                    name: "Hyundai Accent",
+                    tagline: "The Master of Efficiency & Pocket-Friendly Mobility",
+                    hp: "120 HP",
+                    time060: "10.2 sec",
+                    layout: "Front-Engine, FWD",
+                    reasoning: "You are exceptionally practical, focused on saving money at every turn, and need a nimble runabout that squeezes every mile out of a drop of gas."
+                },
+                sunny: {
+                    name: "Nissan Sunny",
+                    tagline: "The Unbreakable Middle Eastern Taxi & Commuter Legend",
+                    hp: "118 HP",
+                    time060: "10.5 sec",
+                    layout: "Front-Engine, FWD",
+                    reasoning: "You appreciate pure unadulterated utilitarian transport that starts every single time without fail and costs next to nothing to maintain."
+                },
+                avalon: {
+                    name: "Toyota Avalon",
+                    tagline: "The Executive American-Style Japanese Cruiser",
+                    hp: "301 HP",
+                    time060: "6.0 sec",
+                    layout: "Front-Engine, FWD V6",
+                    reasoning: "You love buttery smooth V6 power combined with spacious sofa-like comfort and rock-solid Toyota dependability."
+                },
+                yukon: {
+                    name: "GMC Yukon Denali",
+                    tagline: "The Heavyweight American Executive Hauler",
+                    hp: "420 HP",
+                    time060: "6.1 sec",
+                    layout: "V8 Engine, 4WD",
+                    reasoning: "You want supreme road command, massive towing capacity, luxury leather seating for the whole squad, and V8 muscle."
+                },
+                crownvic: {
+                    name: "Ford Crown Victoria Police Interceptor",
+                    tagline: "The Indestructible Body-on-Frame V8 Tank",
+                    hp: "250 HP",
+                    time060: "7.8 sec",
+                    layout: "Front-Engine, RWD V8",
+                    reasoning: "You revere bulletproof reliability, simple rear-wheel-drive V8 mechanics, and tank-like build quality that survives anything."
+                },
+                tahoe: {
+                    name: "Chevrolet Tahoe Z71",
+                    tagline: "The All-Terrain Family Fortress",
+                    hp: "355 - 420 HP",
+                    time060: "6.5 sec",
+                    layout: "V8 Engine, 4x4",
+                    reasoning: "You need robust off-road skid plates, towing grit, and spacious seating for family adventures and road trips."
+                },
+                ls430: {
+                    name: "Lexus LS 430 (UCF30)",
+                    tagline: "The Quietest & Most Reliable V8 Luxury Sedan Ever Built",
+                    hp: "290 HP",
+                    time060: "5.9 sec",
+                    layout: "Front-Engine, RWD V8",
+                    reasoning: "You appreciate timeless engineering, whisper-quiet cabin isolation, velvety V8 smoothness, and legendary Japanese luxury."
+                },
+                m5: {
+                    name: "BMW M5 Competition (F90)",
+                    tagline: "The Twin-Turbo Executive Super-Sedan",
+                    hp: "617 HP",
+                    time060: "3.1 sec",
+                    layout: "Twin-Turbo V8, M xDrive",
+                    reasoning: "You want executive business-class luxury on the outside and face-melting supercar acceleration on command."
+                },
+                g63: {
+                    name: "Mercedes-AMG G63",
+                    tagline: "The Iconic Boxy Bi-Turbo V8 Status Symbol",
+                    hp: "577 HP",
+                    time060: "4.4 sec",
+                    layout: "Bi-Turbo V8, Triple Locking Differentials",
+                    reasoning: "You want maximum status, uncompromised hand-built AMG V8 power, and a commanding view of the road in an iconic military shape."
+                },
+                hilux: {
+                    name: "Toyota Hilux Adventure V6 / Diesel",
+                    tagline: "The Indestructible Workhorse of the Planet",
+                    hp: "235 HP",
+                    time060: "8.9 sec",
+                    layout: "Front-Engine, 4x4 Pickup",
+                    reasoning: "You are rugged, practical, and need a pickup truck that can survive extreme climates and heavy loads without breaking a sweat."
+                },
+                accord: {
+                    name: "Honda Accord Sport Turbo",
+                    tagline: "The Enthusiast's Practical Family Sedan",
+                    hp: "252 HP",
+                    time060: "6.6 sec",
+                    layout: "Front-Engine, FWD",
+                    reasoning: "You want sharp handling, responsive turbo performance, and everyday comfort wrapped in a sleek fastback design."
+                },
+                maxima: {
+                    name: "Nissan Maxima SR",
+                    tagline: "The 4-Door Sports Car",
+                    hp: "300 HP",
+                    time060: "5.7 sec",
+                    layout: "Front-Engine, V6 FWD",
+                    reasoning: "You crave aggressive sports styling and punchy V6 acceleration without sacrificing 4-door daily usability."
+                },
+                lexus_lx: {
+                    name: "Lexus LX 600 VIP",
+                    tagline: "The Ultra-Luxury Flagship Desert Cruiser",
+                    hp: "409 HP",
+                    time060: "6.5 sec",
+                    layout: "Twin-Turbo V6, 4WD",
+                    reasoning: "You demand first-class executive lounge seating combined with the unstoppable off-road chassis of a Land Cruiser."
+                },
+                patrol_safari: {
+                    name: "Nissan Patrol Super Safari (VTC Turbo)",
+                    tagline: "The Manual Gearbox Dune-Bashing Legend",
+                    hp: "280 HP",
+                    time060: "7.9 sec",
+                    layout: "Inline-6, Manual 4x4",
+                    reasoning: "You are an old-school dune basher who loves manual shifting, inline-six turbo torque, and conquering vertical sand walls."
                 }
             },
             ar: {
+                // --- ORIGINAL 18 CARS ---
                 track: {
                     name: "بورشه 911 جي تي 3 (992)",
                     tagline: "وحش الحلبات لعشاق السرعة الخالصة",
                     hp: "502 حصان",
                     time060: "3.2 ثانية",
                     layout: "محرك خلفي، دفع خلفي",
-                    reasoning: "ما عندك صبر للسيارات البطيخة! إجاباتك كلها حلبات ودورات محرك عالية ودقة قيادة. مكانك الطبيعي خلف طارة هالمعجزة الألمانية."
+                    reasoning: "ما عندك صبر للسيارات البطيخة! إجاباتك كلها حلبات ودورات محرك عالية ودقة قيادة."
                 },
                 muscle: {
                     name: "فورد موستانج دارك هورس",
@@ -707,7 +911,7 @@
                     hp: "500 حصان",
                     time060: "3.6 ثانية",
                     layout: "محرك أمامي، دفع خلفي",
-                    reasoning: "تعشق القوة الخام ودخان التواير وصوت الـ V8. موستانج دارك هورس تعكس شخصيتك الجريئة ورغبتك في السيطرة على الأسفلت."
+                    reasoning: "تعشق القوة الخام ودخان التواير وصوت الـ V8. موستانج دارك هورس تعكس شخصيتك الجريئة."
                 },
                 charger: {
                     name: "دودج تشارجر سكات باك / هيلكات",
@@ -715,7 +919,7 @@
                     hp: "485 - 717 حصان",
                     time060: "3.6 - 4.3 ثانية",
                     layout: "محرك أمامي، دفع خلفي/كلي",
-                    reasoning: "تحب تلفت الانتباه وتلعب بالشارع وتدبر راسك بكل إشارة. تشارجر صوتها عالي وجريئة وتناسب شخصيتك القوية تماماً!"
+                    reasoning: "تحب تلفت الانتباه وتلعب بالشارع وتدبر راسك بكل إشارة بهيبة صوتها العالي الجريء."
                 },
                 caprice: {
                     name: "شيفروليه كابريس كلاسيك (تراث / SS)",
@@ -723,7 +927,7 @@
                     hp: "260 - 350 حصان",
                     time060: "6.5 ثانية",
                     layout: "محرك أمامي، دفع خلفي",
-                    reasoning: "تقدر الراحة الأصيلة، الهيبة بالشارع، والخطوط الطويلة. كابريس القديم يعطيك شعور الكنب الملكي مع روقان الكروز الحقيقي."
+                    reasoning: "تقدر الراحة الأصيلة، الهيبة بالشارع، والخطوط الطويلة والكنب الملكي الرايق."
                 },
                 corolla: {
                     name: "تويوتا كورولا",
@@ -731,7 +935,7 @@
                     hp: "139 - 169 حصان",
                     time060: "8.5 ثانية",
                     layout: "محرك أمامي، دفع أمامي",
-                    reasoning: "تبي راحة بال، صرفية بانزين ولا أحلى، واسيارة تعيش معك للقرن القادم. كورولا هي رفيقتك الاعتمادية للحياة اليومية!"
+                    reasoning: "تبي راحة بال، صرفية بانزين ولا أحلى، وسيارة تعيش معك للأبد."
                 },
                 altima: {
                     name: "نيسان ألتيما (2017)",
@@ -739,7 +943,7 @@
                     hp: "182 حصان",
                     time060: "7.7 ثانية",
                     layout: "محرك أمامي، دفع أمامي",
-                    reasoning: "أنت عملي، رايق، وتقضي وقت طويل بالخطوط السريعة. ألتيما 2017 تعطيك راحة وسهولة تنقل بدون تعقيد."
+                    reasoning: "أنت عملي، رايق، وتقضي وقت طويل بالخطوط السريعة براحة تامة."
                 },
                 elantra: {
                     name: "هيونداي النترا",
@@ -747,7 +951,7 @@
                     hp: "147 حصان",
                     time060: "8.1 ثانية",
                     layout: "محرك أمامي، دفع أمامي",
-                    reasoning: "ذكي بمصاريفك، تحب التصميم النظيف، وتبي سيارة تخدمك بالزحمة وتقضيك مشاويرك بكل سلاسة وبدون عناء."
+                    reasoning: "ذكي بمصاريفك، تحب التصميم النظيف، وتبي سيارة تخدمك بكل سلاسة بالمدينة."
                 },
                 cerato: {
                     name: "كيا سيراتو",
@@ -755,7 +959,7 @@
                     hp: "147 حصان",
                     time060: "8.3 ثانية",
                     layout: "محرك أمامي، دفع أمامي",
-                    reasoning: "تبي سيارة خفيفة بالزحمة، سهلة بالمواقف الضيقة، مودرن وشكلها كاشخ. سيراتو تناسب جوك الشبابي والحيوي."
+                    reasoning: "تبي سيارة خفيفة بالزحمة، سهلة بالمواقف الضيقة، ومودرن."
                 },
                 rx8: {
                     name: "إم جي RX8 إس يو في",
@@ -763,7 +967,7 @@
                     hp: "221 حصان",
                     time060: "8.8 ثانية",
                     layout: "محرك أمامي، دفع رباعي",
-                    reasoning: "تحتاج مساحة، هيبة، ودفع رباعي لطلعات البر أو تجميعات الشباب والطلعات العائلية. إم جي RX8 تعطيك كل اللي تتمناه بسعر عملي."
+                    reasoning: "تحتاج مساحة، هيبة، ودفع رباعي لطلعات البر وتجميعات الشباب."
                 },
                 captiva: {
                     name: "شيفروليه كابتيفا",
@@ -771,7 +975,7 @@
                     hp: "148 حصان",
                     time060: "9.5 ثانية",
                     layout: "محرك أمامي، دفع أمامي",
-                    reasoning: "تهمك خدمة العائلة، الأغراض الكثيرة، والمساحة المريحة. كابتيفا تضمن راحة الجميع بدون أي صداع."
+                    reasoning: "تهمك خدمة العائلة، الأغراض الكثيرة، والمساحة المريحة بدون صداع."
                 },
                 ev: {
                     name: "لوسيد أير سافاير",
@@ -779,7 +983,209 @@
                     hp: "1,234 حصان",
                     time060: "1.89 ثانية",
                     layout: "ثلاثة محركات، دفع كلي",
-                    reasoning: "عايش بالمستقبل، تعشق التقنية المجنونة، وتبي تسارع يطير العقل مع فخامة لا تقارن."
+                    reasoning: "عايش بالمستقبل، تعشق التقنية المجنونة، وتبي تسارع يطير العقل."
+                },
+                suv_luxury: {
+                    name: "رنج روفر سبورت SV",
+                    tagline: "إس يو في الفخامة والأداء المطلق",
+                    hp: "626 حصان",
+                    time060: "3.6 ثانية",
+                    layout: "محرك أمامي، دفع كلي",
+                    reasoning: "تطلب الفخامة المطلقة، الهيبة الخارقة، والأداء العالي في كل مكان."
+                },
+                pickup: {
+                    name: "فورد إف-150 رابتور آر",
+                    tagline: "مفترس الصحراء فائق الشحن",
+                    hp: "720 حصان",
+                    time060: "3.9 ثانية",
+                    layout: "شاحنة دفع رباعي خارقة",
+                    reasoning: "لا توقفك التضاريس، تعشق قوة الـ V8 السوبرتشارج وتكتسح الرمال والطعوس بكل ثقة."
+                },
+                hot_hatch: {
+                    name: "هوندا سيفيك تايب آر (FL5)",
+                    tagline: "سيد الحلبات بالدفع الأمامي",
+                    hp: "315 حصان",
+                    time060: "4.9 ثانية",
+                    layout: "محرك أمامي، دفع أمامي",
+                    reasoning: "تحب التعشيق اليدوي، الثبات المرعب، ودقة المنعطفات."
+                },
+                supercar: {
+                    name: "فيراري 458 إيطاليا",
+                    tagline: "تحفة الإحساس الإيطالي الخارق",
+                    hp: "562 حصان",
+                    time060: "3.4 ثانية",
+                    layout: "محرك وسطي، دفع خلفي",
+                    reasoning: "تعشق الجمال الإيطالي، الصوت العالي، والشهرة الفورية بلا منازع."
+                },
+                classic_jpn: {
+                    name: "نيسان سكلاين GT-R R34",
+                    tagline: "جودزيلا اليابان الأسطورية",
+                    hp: "327 حصان",
+                    time060: "4.6 ثانية",
+                    layout: "تيربو مزدوج، دفع كلي",
+                    reasoning: "تعشق ثقافة التعديل الياباني وتاريخ التيربو المزدوج الخالد."
+                },
+                luxury_sedan: {
+                    name: "مرسيدس-بنز الفئة S (S580)",
+                    tagline: "قمة الراحة التنفيذية في العالم",
+                    hp: "496 حصان",
+                    time060: "4.4 ثانية",
+                    layout: "تيربو مزدوج V8، دفع كلي",
+                    reasoning: "لقد وصلت للقمة. تقدر الفخامة التنفيذية العليا، التقنيات الحديثة، والنعومة المطلقة."
+                },
+                offroad: {
+                    name: "جيب رانجلر روبيكون 392",
+                    tagline: "وحش الطرق الوعرة بمحرك V8",
+                    hp: "470 حصان",
+                    time060: "4.5 ثانية",
+                    layout: "محرك أمامي، دفع رباعي V8",
+                    reasoning: "تبي قدرة خارقة بالبر والصخور مجموعة مع هدير محرك V8 ضخم."
+                },
+
+                // --- 18 NEW CARS ADDED ---
+                camry: {
+                    name: "تويوتا كامري (جراند تورينغ / همر)",
+                    tagline: "الملك المطلق لسيارات الدوام والاعتمادية اليومية",
+                    hp: "208 - 232 حصان",
+                    time060: "7.4 ثانية",
+                    layout: "محرك أمامي، دفع أمامي",
+                    reasoning: "تقدر توفير الوقود الذكي، الهيبة العصرية، وسيارة دوام تعتمد عليها بكل ظروف."
+                },
+                landcruiser: {
+                    name: "تويوتا لاندكروزر (LC300 VXR)",
+                    tagline: "أمير الصحراء بلا منازع وملك الفخامة البرية",
+                    hp: "409 حصان",
+                    time060: "6.7 ثانية",
+                    layout: "تيربو مزدوج V6، دفع رباعي مستمر",
+                    reasoning: "تطلب الاعتمادية الأسطورية، الهيبة الطاغية، والقدرة المطلقة على قهر أصعب طعوس البر والخطوط."
+                },
+                patrol: {
+                    name: "نيسان باترول (V8 LE / سوبر سفاري)",
+                    tagline: "بطل الدروب وعملاق الخطوط",
+                    hp: "400 - 428 حصان",
+                    time060: "6.3 ثانية",
+                    layout: "محرك أمامي، دفع رباعي",
+                    reasoning: "تعيش لعزم الـ V8 الجبار تحت الكبوت، الاحترام بالشارع، والسيطرة على الخط والطعس."
+                },
+                escalade2006: {
+                    name: "كاديلاك اسكاليد (2006 كلاسيك الجيل الثاني)",
+                    tagline: "أسطورة الهيب هوب ويخت الفخامة الأمريكي V8",
+                    hp: "345 حصان",
+                    time060: "7.8 ثانية",
+                    layout: "محرك V8، دفع كلي",
+                    reasoning: "تقدر هيبة التسعينات وبداية الألفينات، الجنوط الكبيرة، وصوت الـ Vortec V8 الأصيل."
+                },
+                accent: {
+                    name: "هيونداي أكسنت",
+                    tagline: "ملك التوفير والتنقل الاقتصادي بامتياز",
+                    hp: "120 حصان",
+                    time060: "10.2 ثانية",
+                    layout: "محرك أمامي، دفع أمامي",
+                    reasoning: "أنت عملي جداً، يهمك توفير كل هللة بالبنزين، وتبي سيارة خفيفة توديك وتجيبك بدون وجع راس."
+                },
+                sunny: {
+                    name: "نيسان صني",
+                    tagline: "أيقونة التكسيات والدوامات التي لا تُهزم",
+                    hp: "118 حصان",
+                    time060: "10.5 ثانية",
+                    layout: "محرك أمامي، دفع أمامي",
+                    reasoning: "تقدر الاعتمادية المطلقة التي تشتغل كل يوم بدون أي أعطال وبأقل تكلفة صيانة بالعالم."
+                },
+                avalon: {
+                    name: "تويوتا أفالون",
+                    tagline: "الصالون التنفيذي الأمريكي بنكهة يابانية فاخرة",
+                    hp: "301 حصان",
+                    time060: "6.0 ثانية",
+                    layout: "محرك أمامي، دفع أمامي V6",
+                    reasoning: "تحب عزم محرك الـ V6 الناعم مع المساحة الواسعة والراحة الشبيهة بالكنب والاعتمادية."
+                },
+                yukon: {
+                    name: "جي إم سي يوكن دينالي",
+                    tagline: "العملاق الأمريكي الفاخر لنقل العائلة والشلة",
+                    hp: "420 حصان",
+                    time060: "6.1 ثانية",
+                    layout: "محرك V8، دفع رباعي",
+                    reasoning: "تبي سيطرة تامة بالشارع، قدرة قطر هائلة، مقاعد جلد فخمة للجميع، وقوة V8 صاخبة."
+                },
+                crownvic: {
+                    name: "فورد كراون فيكتوريا (الشرطة / إنترسبتور)",
+                    tagline: "الدبابة الأمريكية الحديدية بمحرك V8",
+                    hp: "250 حصان",
+                    time060: "7.8 ثانية",
+                    layout: "محرك أمامي، دفع خلفي V8",
+                    reasoning: "تقدّس الاعتمادية الحديدية الصلبة، ميكانيكا الـ V8 والدفع الخلفي البسيطة التي تعيش للأبد."
+                },
+                tahoe: {
+                    name: "شيفروليه تاهو Z71",
+                    tagline: "حصن العائلة المخصص للطرق الوعرة",
+                    hp: "355 - 420 حصان",
+                    time060: "6.5 ثانية",
+                    layout: "محرك V8، دبل 4x4",
+                    reasoning: "تحتاج حماية صلبة للطرق الوعرة، قدرة قطر، ومساحة عائلية ضخمة لرحلات البر والمخيمات."
+                },
+                ls430: {
+                    name: "لكزس LS 430",
+                    tagline: "أهدأ وأعتمادية سيارة صالون فاخرة بتاريخ البشرية",
+                    hp: "290 حصان",
+                    time060: "5.9 ثانية",
+                    layout: "محرك أمامي، دفع خلفي V8",
+                    reasoning: "تقدر الهندسة الخالدة، العزل الصوتي الهادئ كالمقبرة، نعومة الـ V8، وفخامة لكزس الأسطورية."
+                },
+                m5: {
+                    name: "بي إم دبليو M5 كومبيتيشن (F90)",
+                    tagline: "السيدان الرياضية التنفيذية ذات التيربو المزدوج",
+                    hp: "617 حصان",
+                    time060: "3.1 ثانية",
+                    layout: "تيربو مزدوج V8، دفع كلي M",
+                    reasoning: "تبي فخامة رجال الأعمال من برة وتسارع سيارات خارقة يطير العقل بدعسة وحدة."
+                },
+                g63: {
+                    name: "مرسيدس-AMG G63",
+                    tagline: "أيقونة الصندوق الحربي الفاخر بـ V8 تيربو",
+                    hp: "577 حصان",
+                    time060: "4.4 ثانية",
+                    layout: "تيربو مزدوج V8، ثلاث دفرنسات",
+                    reasoning: "تطلب أعلى مراتب الهيبة، قوة AMG اليدوية، ورؤية مسيطرة للطريق بهيكل عسكري فخم."
+                },
+                hilux: {
+                    name: "تويوتا هايلكس أدفنتشر (V6 / ديزل)",
+                    tagline: "شاحنة العمل الشاق التي لا توقفها عائق",
+                    hp: "235 حصان",
+                    time060: "8.9 ثانية",
+                    layout: "محرك أمامي، بيك آب دفع رباعي",
+                    reasoning: "أنت قوي، عملي، وتحتاج بيك آب يتحمل أقسى الظروف المناخية وأثقل الأحمال بدون تذمر."
+                },
+                accord: {
+                    name: "هوندا أكورد سبورت تيربو",
+                    tagline: "سيدان العائلة المفضلة لعشاق القيادة",
+                    hp: "252 حصان",
+                    time060: "6.6 ثانية",
+                    layout: "محرك أمامي، دفع أمامي",
+                    reasoning: "تبي ثبات رياضي، أداء تيربو سريع، وراحة يومية بتصميم فاستباك أنيق."
+                },
+                maxima: {
+                    name: "نيسان ماكسيما SR",
+                    tagline: "السيارة الرياضية بأربعة أبواب",
+                    hp: "300 حصان",
+                    time060: "5.7 ثانية",
+                    layout: "محرك أمامي، دفع أمامي V6",
+                    reasoning: "تعشق الشكل الرياضي الهجومي وعزم الـ V6 القوي مع الحفاظ على عملية الـ 4 أبواب."
+                },
+                lexus_lx: {
+                    name: "لكزس LX 600 VIP",
+                    tagline: "قمة الفخامة المطلقة لليخت البري",
+                    hp: "409 حصان",
+                    time060: "6.5 ثانية",
+                    layout: "تيربو مزدوج V6، دفع رباعي",
+                    reasoning: "تطلب مقاعد طائرة درجة أولى فاخرة مع الشاصيه الأسطوري للاندكروزر بالبر والمطار."
+                },
+                patrol_safari: {
+                    name: "نيسان باترول سوبر سفاري (فتك تيربو / عادي)",
+                    tagline: "أسطورة التطعيس بالقير العادي ومحرك الـ 6 سلندر",
+                    hp: "280 حصان",
+                    time060: "7.9 ثانية",
+                    layout: "مكينة سداسية، دبل قير عادي",
+                    reasoning: "أنت راعي طعوس أصيل تعشق تعشيق القير اليدوي وعزم الفتك الخطير في تحدي قمم الرمال."
                 }
             }
         };
@@ -929,7 +1335,7 @@
                 }
             });
 
-            let bestType = 'corolla';
+            let bestType = 'camry';
             let maxScore = -1;
             for (const [type, score] of Object.entries(scores)) {
                 if (score > maxScore) {
@@ -939,7 +1345,7 @@
             }
 
             const db = carsDatabase[currentLang];
-            const car = db[bestType] || db.corolla;
+            const car = db[bestType] || db.camry;
 
             document.getElementById('result-car-name').textContent = car.name;
             document.getElementById('result-tagline').textContent = car.tagline;
